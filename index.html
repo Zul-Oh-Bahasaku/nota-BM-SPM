@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nota BM SPM — Rujukan Bahasa Melayu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F5F1E6;
+    --bg-raised: #FBF8F0;
+    --ink: #2B2417;
+    --ink-soft: #5A4F3C;
+    --primary: #1E4235;
+    --primary-soft: #E4EBE3;
+    --accent: #B07A22;
+    --accent-soft: #F1E4C8;
+    --rust: #8C3E31;
+    --rust-soft: #F0DFD8;
+    --blue: #2C5F8A;
+    --blue-soft: #DEE7EF;
+    --line: #DCD2B8;
+    --shadow: rgba(43, 36, 23, 0.08);
+  }
+
+  :root:not([data-theme="light"]) {
+    @media (prefers-color-scheme: dark) {
+      --bg: #1B1812;
+      --bg-raised: #23201A;
+      --ink: #EDE6D6;
+      --ink-soft: #B8AD94;
+      --primary: #7FB39A;
+      --primary-soft: #26332B;
+      --accent: #D9A94F;
+      --accent-soft: #33291A;
+      --rust: #D98D7B;
+      --rust-soft: #362320;
+      --blue: #8FB8DE;
+      --blue-soft: #1E2E3D;
+      --line: #3A3427;
+      --shadow: rgba(0, 0, 0, 0.35);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --bg: #1B1812;
+    --bg-raised: #23201A;
+    --ink: #EDE6D6;
+    --ink-soft: #B8AD94;
+    --primary: #7FB39A;
+    --primary-soft: #26332B;
+    --accent: #D9A94F;
+    --accent-soft: #33291A;
+    --rust: #D98D7B;
+    --rust-soft: #362320;
+    --blue: #8FB8DE;
+    --blue-soft: #1E2E3D;
+    --line: #3A3427;
+    --shadow: rgba(0, 0, 0, 0.35);
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Karla', system-ui, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Fraunces', Georgia, serif;
+    color: var(--ink);
+    line-height: 1.2;
+    margin: 0 0 0.5em;
+  }
+
+  a { color: var(--primary); }
+
+  .layout {
+    display: flex;
+    min-height: 100vh;
+  }
+
+  /* ---------- Sidebar ---------- */
+  .sidebar {
+    width: 270px;
+    flex-shrink: 0;
+    background: var(--bg-raised);
+    border-right: 1px solid var(--line);
+    padding: 28px 22px 40px;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+  }
+
+  .brand {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+
+  .brand-mark {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--primary);
+  }
+
+  .brand-sub {
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+    margin-bottom: 28px;
+    letter-spacing: 0.02em;
+  }
+
+  .nav-group { margin-bottom: 22px; }
+
+  .nav-group-title {
+    font-size: 0.72rem;
+    color: var(--accent);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    margin-bottom: 6px;
+    padding-left: 2px;
+  }
+
+  .nav-link {
+    display: block;
+    padding: 6px 10px;
+    margin: 1px 0;
+    border-radius: 6px;
+    color: var(--ink-soft);
+    text-decoration: none;
+    font-size: 0.92rem;
+    border-left: 2px solid transparent;
+  }
+
+  .nav-link:hover {
+    background: var(--primary-soft);
+    color: var(--ink);
+  }
+
+  .theme-toggle {
+    margin-top: 10px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8rem;
+    color: var(--ink-soft);
+    background: none;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 6px 12px;
+    cursor: pointer;
+  }
+  .theme-toggle:hover { border-color: var(--accent); color: var(--ink); }
+
+  .menu-btn {
+    display: none;
+  }
+
+  /* ---------- Main content ---------- */
+  main {
+    flex: 1;
+    min-width: 0;
+    padding: 56px 48px 120px;
+    max-width: 880px;
+  }
+
+  header.hero {
+    margin-bottom: 56px;
+    padding-bottom: 32px;
+    border-bottom: 2px solid var(--line);
+  }
+
+  .hero-eyebrow {
+    color: var(--rust);
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+  }
+
+  header.hero h1 {
+    font-size: clamp(2rem, 4vw, 2.9rem);
+    font-weight: 600;
+    max-width: 14ch;
+  }
+
+  header.hero p {
+    max-width: 58ch;
+    color: var(--ink-soft);
+    font-size: 1.05rem;
+    margin-top: 14px;
+  }
+
+  section.topic {
+    margin-bottom: 72px;
+    scroll-margin-top: 24px;
+  }
+
+  section.topic > h2 {
+    font-size: 1.9rem;
+    font-weight: 600;
+    color: var(--primary);
+    border-bottom: 2px solid var(--primary);
+    display: inline-block;
+    padding-bottom: 4px;
+    margin-bottom: 8px;
+  }
+
+  .topic-intro {
+    color: var(--ink-soft);
+    max-width: 62ch;
+    margin-bottom: 32px;
+  }
+
+  h3.sub {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-top: 40px;
+    scroll-margin-top: 24px;
+  }
+
+  h4.subsub {
+    font-family: 'Karla', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--accent);
+    margin-top: 22px;
+  }
+
+  p { margin: 0 0 14px; max-width: 68ch; }
+
+  ul, ol { padding-left: 22px; margin: 0 0 16px; max-width: 64ch; }
+  li { margin-bottom: 6px; }
+
+  /* card / box components */
+  .card {
+    background: var(--bg-raised);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 18px 22px;
+    margin: 18px 0;
+    box-shadow: 0 2px 10px var(--shadow);
+  }
+
+  .example {
+    background: var(--primary-soft);
+    border-left: 3px solid var(--primary);
+    padding: 10px 16px;
+    margin: 12px 0;
+    border-radius: 0 8px 8px 0;
+    font-size: 0.95rem;
+  }
+  .example strong { color: var(--primary); }
+
+  .wrong-right {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 14px 0;
+  }
+  .wrong-right > div {
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 0.93rem;
+  }
+  .wrong { background: var(--rust-soft); border: 1px solid var(--rust); }
+  .right { background: var(--primary-soft); border: 1px solid var(--primary); }
+  .wrong-right .tag { font-weight: 700; font-size: 0.78rem; display: block; margin-bottom: 4px; letter-spacing: 0.03em; }
+  .wrong .tag { color: var(--rust); }
+  .right .tag { color: var(--primary); }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0 24px;
+    font-size: 0.93rem;
+  }
+  th, td {
+    text-align: left;
+    padding: 9px 12px;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+  }
+  th {
+    color: var(--accent);
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    font-weight: 700;
+  }
+
+  .peribahasa-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 14px;
+    margin: 20px 0;
+  }
+  .peribahasa-card {
+    background: var(--bg-raised);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--rust);
+    border-radius: 0 8px 8px 0;
+    padding: 14px 16px;
+  }
+  .peribahasa-card .p-text {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1.02rem;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+  .peribahasa-card .p-meaning {
+    font-size: 0.88rem;
+    color: var(--ink-soft);
+  }
+
+  .format-steps {
+    counter-reset: step;
+    list-style: none;
+    padding-left: 0;
+  }
+  .format-steps li {
+    counter-increment: step;
+    position: relative;
+    padding-left: 34px;
+    margin-bottom: 10px;
+  }
+  .format-steps li::before {
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 0.78rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .note {
+    background: var(--accent-soft);
+    border: 1px dashed var(--accent);
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+    margin: 18px 0;
+  }
+  .note strong { color: var(--accent); }
+
+  .novel-source-note {
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+    margin-bottom: 20px;
+  }
+
+  .novel-analysis-card {
+    background: var(--bg-raised);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 18px 20px;
+    margin: 18px 0;
+  }
+  .novel-analysis-head {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 6px;
+    flex-wrap: wrap;
+  }
+  .novel-bil {
+    font-size: 0.75rem;
+    color: var(--ink-soft);
+    font-weight: 700;
+  }
+  .novel-analysis-head h4 {
+    margin: 0;
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1.15rem;
+    color: var(--ink);
+  }
+  .novel-analysis-card p {
+    max-width: none;
+    margin: 0 0 8px;
+    font-size: 0.94rem;
+  }
+  .tag-pill {
+    display: inline-block;
+    background: var(--accent-soft);
+    color: var(--accent);
+    padding: 2px 12px;
+    border-radius: 20px;
+    font-size: 0.82rem;
+    font-weight: 700;
+  }
+  .novel-versions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 14px;
+  }
+  .novel-version {
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 0.9rem;
+  }
+  .novel-version.dd { background: var(--primary-soft); border-left: 3px solid var(--primary); }
+  .novel-version.sd { background: var(--blue-soft); border-left: 3px solid var(--blue); }
+  .novel-version-title {
+    font-weight: 700;
+    font-size: 0.85rem;
+    margin-bottom: 8px;
+  }
+  .novel-version.dd .novel-version-title { color: var(--primary); }
+  .novel-version.sd .novel-version-title { color: var(--blue); }
+  .novel-version p:last-child { margin-bottom: 0; }
+
+  @media (max-width: 700px) {
+    .novel-versions { grid-template-columns: 1fr; }
+  }
+
+  .personal-note {
+    margin-top: 32px;
+    background: var(--bg-raised);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 16px 18px;
+  }
+  .personal-note-label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+  .personal-note-label span {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    color: var(--accent);
+  }
+  .personal-note-status {
+    font-size: 0.75rem;
+    color: var(--ink-soft);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .personal-note-status.show { opacity: 1; }
+  .personal-note textarea {
+    width: 100%;
+    min-height: 90px;
+    resize: vertical;
+    background: var(--bg);
+    color: var(--ink);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-family: 'Karla', sans-serif;
+    font-size: 0.92rem;
+    line-height: 1.55;
+  }
+  .personal-note textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+  .personal-note textarea::placeholder { color: var(--ink-soft); opacity: 0.7; }
+
+  footer {
+    color: var(--ink-soft);
+    font-size: 0.85rem;
+    border-top: 1px solid var(--line);
+    padding-top: 20px;
+    margin-top: 40px;
+  }
+
+  /* mobile */
+  @media (max-width: 860px) {
+    .sidebar {
+      position: fixed;
+      z-index: 40;
+      left: 0; top: 0;
+      transform: translateX(-100%);
+      transition: transform 0.25s ease;
+      width: 78vw;
+      max-width: 300px;
+      box-shadow: 4px 0 24px var(--shadow);
+    }
+    .sidebar.open { transform: translateX(0); }
+    .menu-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      position: fixed;
+      top: 14px;
+      left: 14px;
+      z-index: 50;
+      background: var(--bg-raised);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 8px 14px;
+      font-family: 'Karla', sans-serif;
+      font-size: 0.85rem;
+      color: var(--ink);
+      cursor: pointer;
+    }
+    .scrim {
+      display: none;
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,0.35);
+      z-index: 35;
+    }
+    .scrim.show { display: block; }
+    main { padding: 84px 20px 100px; }
+    .wrong-right { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<button class="menu-btn" id="menuBtn" aria-label="Buka menu">☰ Topik</button>
+<div class="scrim" id="scrim"></div>
+
+<div class="layout">
+
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <span class="brand-mark">Nota BM</span>
+    </div>
+    <div class="brand-sub">Rujukan Bahasa Melayu SPM</div>
+
+    <nav>
+      <div class="nav-group">
+        <div class="nav-group-title">TATABAHASA</div>
+        <a class="nav-link" href="#tatabahasa">Pengenalan</a>
+        <a class="nav-link" href="#golongan-kata">Golongan Kata</a>
+        <a class="nav-link" href="#imbuhan">Imbuhan</a>
+        <a class="nav-link" href="#ayat">Jenis &amp; Ragam Ayat</a>
+        <a class="nav-link" href="#kesalahan">Kesalahan Lazim</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-title">PERIBAHASA</div>
+        <a class="nav-link" href="#peribahasa">Kategori Peribahasa</a>
+        <a class="nav-link" href="#senarai-peribahasa">Senarai &amp; Maksud</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-title">KARANGAN</div>
+        <a class="nav-link" href="#karangan">Jenis Karangan</a>
+        <a class="nav-link" href="#surat-rasmi">Surat Kiriman Rasmi</a>
+        <a class="nav-link" href="#surat-tidak-rasmi">Surat Tidak Rasmi</a>
+        <a class="nav-link" href="#laporan">Laporan</a>
+        <a class="nav-link" href="#syarahan">Syarahan / Ceramah</a>
+        <a class="nav-link" href="#rencana">Rencana &amp; Dialog</a>
+        <a class="nav-link" href="#tidak-berformat">Karangan Tidak Berformat</a>
+        <a class="nav-link" href="#tips-karangan">Tip Markah Tinggi</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-title">KOMSAS</div>
+        <a class="nav-link" href="#komsas">Cara Kuasai Komsas</a>
+        <a class="nav-link" href="#unsur-komsas">Unsur-Unsur Utama</a>
+        <a class="nav-link" href="#teknik-jawab">Teknik Jawab Soalan</a>
+        <a class="nav-link" href="#analisis-novel-ppc">Analisis Soalan Novel PPC 2026</a>
+      </div>
+    </nav>
+
+    <button class="theme-toggle" id="themeToggle">◐ Tukar tema</button>
+  </aside>
+
+  <main>
+    <header class="hero">
+      <div class="hero-eyebrow">Nota Rujukan · Bahasa Melayu SMK</div>
+      <h1>Semua yang perlu untuk BM SPM, dalam satu tempat</h1>
+      <p>Tatabahasa, peribahasa, format karangan dan teknik komsas — disusun dengan contoh supaya senang diulang kaji bila-bila masa.</p>
+    </header>
+
+    <!-- ================= TATABAHASA ================= -->
+    <section class="topic" id="tatabahasa">
+      <h2>Tatabahasa</h2>
+      <p class="topic-intro">Tatabahasa ialah asas kepada Kertas 1 (soalan objektif/struktur) dan turut dinilai dalam karangan Kertas 2. Kuasai golongan kata dan imbuhan dahulu — selebihnya lebih mudah.</p>
+
+      <h3 class="sub" id="golongan-kata">Golongan Kata</h3>
+      <p>Bahasa Melayu mempunyai empat golongan kata utama:</p>
+
+      <h4 class="subsub">1. Kata Nama</h4>
+      <p>Merujuk kepada orang, tempat, benda atau konsep.</p>
+      <ul>
+        <li><strong>Kata Nama Am</strong> — merujuk benda secara umum. <em>Contoh:</em> guru, bandar, kerusi, negara.</li>
+        <li><strong>Kata Nama Khas</strong> — merujuk nama khusus, ditulis dengan huruf besar. <em>Contoh:</em> Melaka, Sungai Pahang, Tun Mahathir.</li>
+        <li><strong>Kata Ganti Nama</strong> — menggantikan kata nama. <em>Diri:</em> saya, kami, kita, awak, mereka. <em>Tunjuk:</em> ini, itu, sini, situ.</li>
+      </ul>
+
+      <h4 class="subsub">2. Kata Kerja</h4>
+      <ul>
+        <li><strong>Kata Kerja Transitif</strong> — memerlukan objek selepasnya. <em>Contoh:</em> Ali <u>membaca</u> buku.</li>
+        <li><strong>Kata Kerja Tak Transitif</strong> — tidak memerlukan objek. <em>Contoh:</em> Adik <u>menangis</u>.</li>
+      </ul>
+
+      <h4 class="subsub">3. Kata Adjektif</h4>
+      <p>Menerangkan sifat atau keadaan kata nama. <em>Contoh:</em> cantik, tinggi, pantas, sedih. Boleh digandakan untuk penekanan: <em>cantik-cantik, tinggi-tinggi</em>.</p>
+
+      <h4 class="subsub">4. Kata Tugas</h4>
+      <p>Kata yang menghubungkan atau memberi fungsi tatabahasa, tidak boleh menerima imbuhan.</p>
+      <ul>
+        <li><strong>Kata Hubung</strong> — dan, atau, tetapi, kerana, walaupun</li>
+        <li><strong>Kata Seru</strong> — Wah!, Aduh!, Amboi!</li>
+        <li><strong>Kata Perintah</strong> — sila, jangan, usah, tolong</li>
+        <li><strong>Kata Sendi Nama</strong> — di, ke, dari, pada, untuk, dengan</li>
+      </ul>
+
+      <div class="note"><strong>Tip:</strong> Dalam Kertas 1, soalan sering menguji sama ada perkataan tergolong dalam kata nama am/khas atau kata kerja transitif/tak transitif — cuba kenal pasti sama ada perkataan itu perlukan objek.</div>
+
+      <h3 class="sub" id="imbuhan">Imbuhan</h3>
+      <p>Imbuhan mengubah golongan kata dan makna kata dasar. Terdapat empat jenis:</p>
+
+      <table>
+        <tr><th>Jenis</th><th>Contoh Imbuhan</th><th>Contoh Perkataan</th></tr>
+        <tr><td>Awalan</td><td>meN-, ber-, di-, ter-, se-, peN-, ke-</td><td>membaca, bermain, dimakan, terjatuh, sebuah</td></tr>
+        <tr><td>Akhiran</td><td>-kan, -i, -an</td><td>tuliskan, jauhi, makanan</td></tr>
+        <tr><td>Apitan</td><td>meN-...-kan, ber-...-an, ke-...-an, peN-...-an</td><td>membesarkan, berpandangan, kebersihan, pembelajaran</td></tr>
+        <tr><td>Sisipan</td><td>-el-, -er-, -em-, -in-</td><td>telunjuk, seruling, gemuruh, sinambung</td></tr>
+      </table>
+
+      <div class="wrong-right">
+        <div class="wrong"><span class="tag">SALAH</span>Dia <em>menyanyi</em> lagu itu <em>dengan</em> baik sekali dia.</div>
+        <div class="right"><span class="tag">BETUL</span>Dia <em>menyanyikan</em> lagu itu dengan baik sekali.</div>
+      </div>
+
+      <h3 class="sub" id="ayat">Jenis &amp; Ragam Ayat</h3>
+
+      <h4 class="subsub">Mengikut Bilangan Klausa</h4>
+      <ul>
+        <li><strong>Ayat Tunggal</strong> — satu subjek, satu predikat. <em>Contoh:</em> Aminah menyapu halaman.</li>
+        <li><strong>Ayat Majmuk Gabungan</strong> — dua ayat tunggal digabung kata hubung setara (dan, atau, tetapi). <em>Contoh:</em> Aminah menyapu halaman dan Ali membasuh kereta.</li>
+        <li><strong>Ayat Majmuk Pancangan</strong> — satu ayat kecil disisipkan dalam ayat induk menggunakan kata hubung pancangan (yang, kerana, walaupun, jika). <em>Contoh:</em> Saya suka buku yang dihadiahkan oleh guru itu.</li>
+        <li><strong>Ayat Majmuk Campuran</strong> — gabungan ayat gabungan dan pancangan dalam satu ayat.</li>
+      </ul>
+
+      <h4 class="subsub">Ragam Ayat</h4>
+      <div class="wrong-right">
+        <div class="right"><span class="tag">AKTIF</span>Ali memukul bola itu.</div>
+        <div class="right"><span class="tag">PASIF</span>Bola itu dipukul oleh Ali.</div>
+      </div>
+
+      <h4 class="subsub">Jenis Ayat Mengikut Ragam</h4>
+      <ul>
+        <li><strong>Ayat Penyata</strong> — menyatakan fakta. <em>Hujan turun dengan lebat.</em></li>
+        <li><strong>Ayat Tanya</strong> — menanya sesuatu. <em>Adakah kamu sudah makan?</em></li>
+        <li><strong>Ayat Perintah</strong> — arahan/larangan. <em>Tolong tutup pintu itu.</em></li>
+        <li><strong>Ayat Seruan</strong> — meluahkan perasaan. <em>Aduhai, sakitnya!</em></li>
+      </ul>
+
+      <h3 class="sub" id="kesalahan">Kesalahan Tatabahasa Lazim</h3>
+      <div class="wrong-right">
+        <div class="wrong"><span class="tag">SALAH</span>Saya telah pergi ke pasar semalam.</div>
+        <div class="right"><span class="tag">BETUL</span>Saya pergi ke pasar semalam. <br><small>(elak "telah" + kata kerja jika sudah ada penanda masa lampau)</small></div>
+      </div>
+      <div class="wrong-right">
+        <div class="wrong"><span class="tag">SALAH</span>Kesemua pelajar-pelajar itu hadir.</div>
+        <div class="right"><span class="tag">BETUL</span>Semua pelajar itu hadir. <br><small>(elak gandaan kata + "semua/setiap")</small></div>
+      </div>
+      <div class="wrong-right">
+        <div class="wrong"><span class="tag">SALAH</span>Dia lebih tinggi dari saya.</div>
+        <div class="right"><span class="tag">BETUL</span>Dia lebih tinggi daripada saya. <br><small>("daripada" untuk bandingan, "dari" untuk tempat/masa)</small></div>
+      </div>
+
+      <div class="personal-note" data-note-key="tatabahasa">
+        <div class="personal-note-label">
+          <span>NOTA TAMBAHAN SAYA</span>
+          <span class="personal-note-status">Disimpan</span>
+        </div>
+        <textarea placeholder="Taip nota, contoh soalan, atau peringatan sendiri di sini — akan tersimpan secara automatik di peranti ini."></textarea>
+      </div>
+    </section>
+
+    <!-- ================= PERIBAHASA ================= -->
+    <section class="topic" id="peribahasa">
+      <h2>Peribahasa</h2>
+      <p class="topic-intro">Peribahasa penting untuk Kertas 1 (padanan maksud) dan menaikkan mutu bahasa dalam karangan. Kuasai kategori dan hafal contoh yang kerap muncul.</p>
+
+      <table>
+        <tr><th>Kategori</th><th>Ciri</th><th>Contoh</th></tr>
+        <tr><td>Simpulan Bahasa</td><td>Frasa tetap 2 patah perkataan atau lebih, makna kiasan</td><td>ringan tulang, kaki bangku, panjang tangan</td></tr>
+        <tr><td>Perumpamaan</td><td>Mengandungi perbandingan, biasanya guna "bagai/seperti/umpama"</td><td>bagai aur dengan tebing, seperti anai-anai</td></tr>
+        <tr><td>Pepatah</td><td>Ajaran/nasihat orang tua-tua, ayat lengkap</td><td>Alah bisa, tegal biasa.</td></tr>
+        <tr><td>Bidalan</td><td>Sindiran atau teguran halus</td><td>Harapkan pagar, pagar makan padi.</td></tr>
+        <tr><td>Kata-kata Hikmat</td><td>Nasihat berunsur pengajaran hidup</td><td>Hidup ini umpama roda, kadang di atas, kadang di bawah.</td></tr>
+      </table>
+
+      <h3 class="sub" id="senarai-peribahasa">Senarai Peribahasa Popular SPM</h3>
+      <div class="peribahasa-grid">
+        <div class="peribahasa-card"><div class="p-text">Bagai aur dengan tebing</div><div class="p-meaning">Hubungan yang saling bantu-membantu.</div></div>
+        <div class="peribahasa-card"><div class="p-text">Bagai anjing dengan kucing</div><div class="p-meaning">Sentiasa bertengkar / tidak pernah sepakat.</div></div>
+        <div class="peribahasa-card"><div class="p-text">Ringan tulang</div><div class="p-meaning">Rajin membantu tanpa mengira penat.</div></div>
+        <div class="peribahasa-card"><div class="p-text">Berat tulang</div><div class="p-meaning">Malas bekerja.</div></div>
+        <div class="peribahasa-card"><div class="p-text">Kaki bangku</div><div class="p-meaning">Tidak mahir dalam sesuatu bidang/sukan.</div></div>
+        <div class="peribahasa-card"><div class="p-text">Panjang tangan</div><div class="p-meaning">Suka mencuri.</div></div>
+        <div class="peribahasa-card"><div class="p-text">Besar kepala</div><div class="p-meaning">Sombong / bongkak.</div></div>
+        <div class="peribahasa-card"><div class="p-text">Buah tangan</div><div class="p-meaning">Hadiah atau cenderahati.</div></div>
+        <div class="peribahasa-card"><div class="p-text">Hangat-hangat tahi ayam</div><div class="p-meaning">Bersemangat pada mulanya sahaja.</div></div>
+        <div class="peribahasa-card"><div class="p-text">Seperti katak di bawah tempurung</div><div class="p-meaning">Berpandangan sempit / kurang pengetahuan.</div></div>
+        <div class="peribahasa-card"><div class="p-text">Seperti aur dengan tebing</div><div class="p-meaning">Persahabatan yang erat dan saling memerlukan.</div></div>
+        <div class="peribahasa-card"><div class="p-text">Umpama pinang dibelah dua</div><div class="p-meaning">Sangat serupa / seiras.</div></div>
+        <div class="peribahasa-card"><div class="p-text">Sedikit-sedikit lama-lama jadi bukit</div><div class="p-meaning">Sesuatu yang kecil jika terkumpul lama-kelamaan menjadi banyak.</div></div>
+        <div class="peribahasa-card"><div class="p-text">Alah bisa, tegal biasa</div><div class="p-meaning">Sesuatu yang sukar menjadi mudah jika selalu dilakukan.</div></div>
+        <div class="peribahasa-card"><div class="p-text">Melentur buluh biarlah dari rebungnya</div><div class="p-meaning">Mendidik anak elok bermula sejak kecil.</div></div>
+        <div class="peribahasa-card"><div class="p-text">Harapkan pagar, pagar makan padi</div><div class="p-meaning">Orang yang diharap menjaga, sebaliknya mengkhianati.</div></div>
+        <div class="peribahasa-card"><div class="p-text">Sepandai-pandai tupai melompat, akhirnya jatuh ke tanah</div><div class="p-meaning">Sepandai-pandai orang menyembunyikan kejahatan, akhirnya terbongkar juga.</div></div>
+        <div class="peribahasa-card"><div class="p-text">Air dicincang tidak akan putus</div><div class="p-meaning">Perbalahan keluarga akhirnya akan berbaik semula.</div></div>
+        <div class="peribahasa-card"><div class="p-text">Bak kacang lupakan kulit</div><div class="p-meaning">Melupakan asal-usul / jasa orang lain.</div></div>
+        <div class="peribahasa-card"><div class="p-text">Enau dalam belukar, melepaskan pucuk masing-masing</div><div class="p-meaning">Setiap orang mementingkan diri sendiri.</div></div>
+      </div>
+      <div class="note"><strong>Tip hafalan:</strong> Kumpulkan peribahasa mengikut tema (kerajinan, kesabaran, muslihat, kerjasama) — lebih mudah diingat berbanding hafal secara rawak.</div>
+
+      <div class="personal-note" data-note-key="peribahasa">
+        <div class="personal-note-label">
+          <span>NOTA TAMBAHAN SAYA</span>
+          <span class="personal-note-status">Disimpan</span>
+        </div>
+        <textarea placeholder="Tambah peribahasa lain yang guru ajar, atau maksud yang senang awak ingat."></textarea>
+      </div>
+    </section>
+
+    <!-- ================= KARANGAN ================= -->
+    <section class="topic" id="karangan">
+      <h2>Karangan</h2>
+      <p class="topic-intro">Karangan dalam SPM terbahagi kepada dua kategori besar: <strong>Karangan Berformat</strong> (surat, laporan, syarahan, dll.) dan <strong>Karangan Tidak Berformat</strong> (naratif, deskriptif, perbincangan). Format yang tepat menyumbang markah "kesesuaian" yang penting.</p>
+
+      <h3 class="sub" id="surat-rasmi">Surat Kiriman Rasmi</h3>
+      <p>Digunakan untuk memohon, mengadu, mencadangkan sesuatu kepada pihak berkuasa/organisasi.</p>
+      <ol class="format-steps">
+        <li>Alamat pengirim (penjuru atas kiri)</li>
+        <li>Tarikh (di bawah alamat pengirim)</li>
+        <li>Alamat penerima + jawatan (cth: Pengetua, SMK Bukit Damai)</li>
+        <li>Perkara / tajuk surat — digariskan, bermula "Perkara:"</li>
+        <li>Kata alu-aluan: "Dengan hormatnya perkara di atas dirujuk."</li>
+        <li>Isi surat — 3 hingga 4 perenggan (pengenalan, isi, cadangan/penutup)</li>
+        <li>Penutup: "Sekian, terima kasih."</li>
+        <li>Kata akhir: "Yang benar," / "Saya yang menurut perintah,"</li>
+        <li>Tandatangan + nama penuh</li>
+      </ol>
+
+      <h3 class="sub" id="surat-tidak-rasmi">Surat Kiriman Tidak Rasmi</h3>
+      <p>Ditulis kepada rakan atau saudara-mara, nada lebih santai.</p>
+      <ol class="format-steps">
+        <li>Alamat pengirim + tarikh</li>
+        <li>Kata sapaan: "Along Aiman yang dikasihi,"</li>
+        <li>Perenggan pembuka (bertanya khabar)</li>
+        <li>Isi surat (2–3 perenggan)</li>
+        <li>Penutup mesra: "Sekian sahaja surat daripada saya."</li>
+        <li>Kata akhir: "Adikmu yang disayangi,"</li>
+        <li>Nama (tanpa tandatangan formal)</li>
+      </ol>
+
+      <h3 class="sub" id="laporan">Laporan</h3>
+      <p>Menceritakan sesuatu peristiwa/aktiviti yang telah berlaku secara sistematik.</p>
+      <ol class="format-steps">
+        <li>Tajuk laporan (cth: Laporan Program Gotong-Royong Perdana)</li>
+        <li>Pendahuluan — nyatakan tujuan, tarikh, masa, tempat, penganjur</li>
+        <li>Isi — susun mengikut kronologi (pagi → tengah hari → petang) atau mengikut aktiviti</li>
+        <li>Penutup — rumusan dan cadangan / harapan untuk masa depan</li>
+        <li>Disediakan oleh: (nama + jawatan)</li>
+      </ol>
+
+      <h3 class="sub" id="syarahan">Syarahan / Ceramah / Ucapan</h3>
+      <ol class="format-steps">
+        <li>Kata aluan/panggilan hormat: "Yang dihormati pengerusi majlis, para hakim, dan hadirin sekalian."</li>
+        <li>Pendahuluan — nyatakan tajuk dan tujuan berucap</li>
+        <li>Isi — 3 hingga 4 isi utama, disokong huraian dan contoh</li>
+        <li>Penutup — rumusan + seruan/harapan</li>
+        <li>Penamat: "Sekian, wabillahi taufik walhidayah, wassalamualaikum warahmatullahi wabarakatuh." / "Sekian, terima kasih."</li>
+      </ol>
+      <div class="note">Beza syarahan &amp; ceramah: syarahan biasanya bersifat pertandingan/formal dengan sapaan hakim; ceramah lebih kepada penyampaian ilmu/nasihat kepada orang ramai.</div>
+
+      <h3 class="sub" id="rencana">Rencana &amp; Dialog</h3>
+      <p><strong>Rencana</strong> — penulisan pandangan/analisis tentang sesuatu isu, biasa untuk majalah/akhbar. Ada tajuk menarik, pendahuluan, isi (fakta + pandangan penulis), dan penutup dengan cadangan.</p>
+      <p><strong>Dialog</strong> — perbualan antara dua watak atau lebih. Setiap giliran bercakap ditanda dengan nama watak diikuti tanda titik bercantum ( : ) dan tidak perlu tanda petik.</p>
+      <div class="example"><strong>Contoh:</strong> Aiman: Kau dah siap buat kerja projek Sains tu?<br>Faris: Belum lagi, aku nak siapkan hujung minggu ini.</div>
+
+      <h3 class="sub" id="tidak-berformat">Karangan Tidak Berformat</h3>
+      <p>Meliputi karangan naratif (bercerita), deskriptif (menggambarkan), dan perbincangan/pendapat (isu semasa).</p>
+      <div class="card">
+        <h4 class="subsub" style="margin-top:0;">Struktur Umum</h4>
+        <ul>
+          <li><strong>Pendahuluan</strong> — perkenalkan tajuk dengan menarik (soalan retorik, peribahasa, fakta/statistik, definisi)</li>
+          <li><strong>Isi (4–5 perenggan)</strong> — satu isi utama setiap perenggan, disokong huraian + contoh/pengalaman</li>
+          <li><strong>Penutup</strong> — rumusan isi + pandangan/harapan/cadangan masa depan</li>
+        </ul>
+      </div>
+      <div class="wrong-right">
+        <div class="wrong"><span class="tag">PENDAHULUAN LEMAH</span>Pada zaman sekarang, banyak remaja yang menggunakan telefon pintar.</div>
+        <div class="right"><span class="tag">PENDAHULUAN KUAT</span>Sejak subuh hingga ke lena malam, telefon pintar seakan-akan menjadi organ tambahan dalam kehidupan remaja masa kini.</div>
+      </div>
+
+      <h3 class="sub" id="tips-karangan">Tip Markah Tinggi</h3>
+      <ul>
+        <li>Gunakan <strong>penanda wacana</strong> pelbagai: tambahan pula, sehubungan dengan itu, walau bagaimanapun, kesimpulannya.</li>
+        <li>Selitkan <strong>1–2 peribahasa</strong> yang sesuai konteks — jangan paksa jika tidak sesuai.</li>
+        <li>Elakkan bahasa pasar/singkatan SMS (cth: "xde", "sbb", "je").</li>
+        <li>Semak <strong>ejaan kata pinjaman</strong> yang kerap silap: aktiviti (bukan "aktifiti"), teknologi, kualiti, produktiviti.</li>
+        <li>Panjang ideal karangan berformat: 200–250 patah perkataan; tidak berformat: 350 patah perkataan ke atas.</li>
+      </ul>
+
+      <div class="personal-note" data-note-key="karangan">
+        <div class="personal-note-label">
+          <span>NOTA TAMBAHAN SAYA</span>
+          <span class="personal-note-status">Disimpan</span>
+        </div>
+        <textarea placeholder="Simpan contoh ayat pendahuluan/penutup yang awak suka, atau format tambahan dari guru."></textarea>
+      </div>
+    </section>
+
+    <!-- ================= KOMSAS ================= -->
+    <section class="topic" id="komsas">
+      <h2>Komsas</h2>
+      <p class="topic-intro">Komponen Sastera (Komsas) menguji kefahaman terhadap novel, cerpen, puisi (sajak/puisi tradisional) dan drama yang ditetapkan oleh KPM/DBP. Oleh sebab teks boleh berbeza mengikut zon dan tahun peperiksaan, fokus pada <strong>kemahiran menganalisis</strong> di bawah — kemahiran ini terpakai untuk teks apa sahaja yang diajar oleh guru anda.</p>
+
+      <div class="note"><strong>Nota penting:</strong> Senarai teks Komsas (novel, antologi, drama) ditetapkan mengikut edisi/zon dan boleh dikemas kini oleh DBP dari semasa ke semasa. Sila rujuk guru BM atau buku teks rasmi untuk memastikan tajuk teks yang tepat untuk sesi persekolahan anda.</div>
+
+      <h3 class="sub" id="unsur-komsas">Unsur-Unsur Utama yang Perlu Dikuasai</h3>
+      <table>
+        <tr><th>Unsur</th><th>Perkara Perlu Dikenal Pasti</th></tr>
+        <tr><td>Tema &amp; Persoalan</td><td>Isu utama (tema) dan isu-isu sampingan (persoalan) yang dibangkitkan dalam teks</td></tr>
+        <tr><td>Watak &amp; Perwatakan</td><td>Watak utama/sampingan dan sifat/personaliti setiap watak, disokong bukti dari teks</td></tr>
+        <tr><td>Latar</td><td>Latar tempat, latar masa, latar masyarakat yang digambarkan</td></tr>
+        <tr><td>Plot</td><td>Susunan peristiwa: permulaan, perkembangan, klimaks, peleraian; teknik plot (imbas kembali, dialog, monolog)</td></tr>
+        <tr><td>Gaya Bahasa</td><td>Penggunaan bahasa kiasan, peribahasa, dialek, ironi dalam teks</td></tr>
+        <tr><td>Nilai</td><td>Nilai murni yang terkandung (cth: kasih sayang, ketabahan, kerjasama)</td></tr>
+        <tr><td>Pengajaran</td><td>Iktibar yang boleh diambil pembaca, biasa ditulis dalam ayat "Kita hendaklah..."</td></tr>
+      </table>
+
+      <h3 class="sub" id="teknik-jawab">Teknik Menjawab Soalan Komsas</h3>
+      <div class="card">
+        <h4 class="subsub" style="margin-top:0;">Format Jawapan Berkesan</h4>
+        <ol class="format-steps">
+          <li><strong>Pernyataan</strong> — jawab terus soalan dalam satu ayat pendahuluan</li>
+          <li><strong>Huraian/Bukti</strong> — sokong dengan peristiwa/dialog/perincian dari teks</li>
+          <li><strong>Kaitan</strong> — hubungkan jawapan dengan soalan atau nilai/pengajaran jika diminta</li>
+        </ol>
+      </div>
+      <div class="example"><strong>Contoh soalan:</strong> Nyatakan satu nilai murni yang terdapat dalam petikan novel dan huraikan.<br><strong>Contoh jawapan:</strong> Nilai murni yang terdapat dalam petikan ialah semangat kerjasama. Hal ini digambarkan apabila watak utama bergotong-royong dengan penduduk kampung untuk membersihkan surau sebelum sambutan hari raya. Semangat ini menunjukkan bahawa kerjasama dapat mengeratkan hubungan sesama anggota masyarakat.</div>
+
+      <ul>
+        <li>Baca soalan dengan teliti — kenal pasti kata tanya (nyatakan, jelaskan, bandingkan, huraikan) kerana setiap satu memerlukan gaya jawapan berbeza.</li>
+        <li>Untuk soalan novel/cerpen keseluruhan, buat <strong>peta watak</strong> dan <strong>garis masa plot</strong> semasa mengulang kaji.</li>
+        <li>Untuk puisi, kenal pasti <strong>maksud rangkap demi rangkap</strong> dahulu sebelum menghafal — lebih mudah diingat berbanding hafalan literal.</li>
+      </ul>
+
+      <h3 class="sub" id="analisis-novel-ppc">Analisis Soalan Novel — Percubaan SPM Negeri-Negeri 2026 (Soalan 8(ii))</h3>
+      <p class="novel-source-note">Sumber: @Cikgu Zul Oh BahasaKu — Analisis Kertas 2 Soalan Novel (8)(ii), Soalan Percubaan SPM Negeri-Negeri 2026, meliputi novel <em>Disebalik Dinara</em> dan <em>Silir Daksina</em>.</p>
+
+      <div class="novel-analysis-card">
+        <div class="novel-analysis-head"><span class="novel-bil">Bil. 1</span><h4>Selangor (Set 1)</h4></div>
+        <p><strong>Arahan Peristiwa:</strong> Peristiwa yang menyedihkan dan menimbulkan perasaan simpati kepada pembaca.</p>
+        <p><strong>Kata Kunci:</strong> <span class="tag-pill">Emosi (Sedih/Simpati)</span></p>
+        <div class="novel-versions">
+          <div class="novel-version dd">
+            <div class="novel-version-title">Disebalik Dinara</div>
+            <p><strong>Contoh Peristiwa:</strong> Farisha mendapat tahu bahawa Karl sanggup menanam pelbagai implan tanpa bius dan memberikan pelbagai ubat dalam tubuhnya semasa Farisha masih bayi sebagai bahan uji kajinya. Hal ini dikatakan demikian kerana Karl mahu menjadikan Farisha seorang yang genius.</p>
+            <p><strong>Alasan:</strong> Peristiwa ini merupakan peristiwa yang menyedihkan dan menimbulkan perasaan simpati kepada pembaca kerana seorang bapa kandung sanggup menyeksa dan menjadikan anaknya yang masih bayi sebagai bahan uji kaji sains tanpa belas kasihan demi ketaksubannya.</p>
+          </div>
+          <div class="novel-version sd">
+            <div class="novel-version-title">Silir Daksina</div>
+            <p><strong>Contoh Peristiwa:</strong> Umi tidak membenarkan Haiqal melawat pusara arwah ayahnya, Abdullah Kayan di Batu Pahat ketika dia berumur 12 atas alasan Haiqal akan menduduki UPSR malahan Uminya mengugut bahawa dia tidak akan memberikan wang belanja untuk Haiqal ke Batu Pahat.</p>
+            <p><strong>Alasan:</strong> Peristiwa ini merupakan peristiwa yang menyedihkan dan menimbulkan perasaan simpati kepada pembaca kerana seorang ibu tergamak menghalang hak anak kandungnya sendiri untuk menziarahi pusara arwah bapa kandungnya.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="novel-analysis-card">
+        <div class="novel-analysis-head"><span class="novel-bil">Bil. 2</span><h4>Selangor (Set 2)</h4></div>
+        <p><strong>Arahan Peristiwa:</strong> Peristiwa yang membuktikan bahawa kebijaksanaan dalam tindakan dapat menyelesaikan pelbagai masalah.</p>
+        <p><strong>Kata Kunci:</strong> <span class="tag-pill">Kebijaksanaan / Penyelesaian Masalah</span></p>
+        <div class="novel-versions">
+          <div class="novel-version dd">
+            <div class="novel-version-title">Disebalik Dinara</div>
+            <p><strong>Contoh Peristiwa:</strong> Azraai bekerjasama dengan Rosman untuk menjejaki adik angkatnya, Farisha yang telah diculik oleh Medina. Azraai telah menelefon Rosman dan Rosman telah menggunakan aplikasi telefon pintar secara tidak langsung berjaya menjejaki Farisha yang dibawa lari ke arah utara.</p>
+            <p><strong>Alasan:</strong> Peristiwa ini membuktikan bahawa kebijaksanaan dalam tindakan dapat menyelesaikan pelbagai masalah kerana tindakan mengaplikasikan teknologi pengesan lokasi pada telefon pintar secara pantas berjaya menjejaki pergerakan penculik lalu menyelamatkan mangsa.</p>
+          </div>
+          <div class="novel-version sd">
+            <div class="novel-version-title">Silir Daksina</div>
+            <p><strong>Contoh Peristiwa:</strong> Haiqal menghidupkan kumpulan zapin D'Purnama kembali. Haiqal telah bekerjasama dengan Pak Cik Bakar, Haji Salim dan Wak Arif untuk melaksanakan impian arwah ayahnya kerana dia tidak mempunyai pengetahuan mendalam tentang zapin.</p>
+            <p><strong>Alasan:</strong> Peristiwa ini membuktikan bahawa kebijaksanaan dalam tindakan dapat menyelesaikan pelbagai masalah kerana tindakan bekerjasama dengan golongan tua yang lebih berpengalaman dapat mengatasi kelemahan diri serta merealisasikan semula seni warisan tradisional.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="novel-analysis-card">
+        <div class="novel-analysis-head"><span class="novel-bil">Bil. 3</span><h4>Melaka</h4></div>
+        <p><strong>Arahan Peristiwa:</strong> Peristiwa yang bertujuan mendidik pembaca.</p>
+        <p><strong>Kata Kunci:</strong> <span class="tag-pill">Pengajaran / Nilai Murni</span></p>
+        <div class="novel-versions">
+          <div class="novel-version dd">
+            <div class="novel-version-title">Disebalik Dinara</div>
+            <p><strong>Contoh Peristiwa:</strong> Farisha mendapat tahu bahawa Karl sanggup menanam pelbagai implan tanpa bius dan memberikan pelbagai ubat dalam tubuhnya semasa Farisha masih bayi sebagai bahan uji kajinya. Hal ini dikatakan demikian kerana Karl mahu menjadikan Farisha seorang yang genius.</p>
+            <p><strong>Alasan:</strong> Peristiwa ini merupakan peristiwa yang bertujuan mendidik pembaca kerana memberi kesedaran bahawa nilai kemanusiaan dan kasih sayang terhadap anak tidak boleh dikorbankan demi mengejar kemajuan teknologi sains semata-mata.</p>
+          </div>
+          <div class="novel-version sd">
+            <div class="novel-version-title">Silir Daksina</div>
+            <p><strong>Contoh Peristiwa:</strong> Haiqal menghidupkan kumpulan zapin D'Purnama kembali. Haiqal telah bekerjasama dengan Pak Cik Bakar, Haji Salim dan Wak Arif untuk melaksanakan impian arwah ayahnya kerana dia tidak mempunyai pengetahuan mendalam tentang zapin.</p>
+            <p><strong>Alasan:</strong> Peristiwa ini merupakan peristiwa yang bertujuan mendidik pembaca kerana mengajar generasi muda agar berusaha gigih memelihara dan menghidupkan kembali warisan kebudayaan bangsa yang kian dilupakan.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="novel-analysis-card">
+        <div class="novel-analysis-head"><span class="novel-bil">Bil. 4</span><h4>Negeri Sembilan</h4></div>
+        <p><strong>Arahan Peristiwa:</strong> Peristiwa yang boleh dihindari oleh pembaca.</p>
+        <p><strong>Kata Kunci:</strong> <span class="tag-pill">Pengajaran (Perkara Negatif)</span></p>
+        <div class="novel-versions">
+          <div class="novel-version dd">
+            <div class="novel-version-title">Disebalik Dinara</div>
+            <p><strong>Contoh Peristiwa:</strong> Farisha mendapat tahu bahawa Karl sanggup menanam pelbagai implan tanpa bius dan memberikan pelbagai ubat dalam tubuhnya semasa Farisha masih bayi sebagai bahan uji kajinya. Hal ini dikatakan demikian kerana Karl mahu menjadikan Farisha seorang yang genius.</p>
+            <p><strong>Alasan:</strong> Peristiwa ini merupakan peristiwa yang boleh dihindari oleh pembaca kerana perbuatan zalim menganiayai anak kandung sendiri yang masih bayi demi kepentingan kajian peribadi merupakan tindakan tidak beretika yang melanggar hukum agama dan nilai moral.</p>
+          </div>
+          <div class="novel-version sd">
+            <div class="novel-version-title">Silir Daksina</div>
+            <p><strong>Contoh Peristiwa:</strong> Umi tidak membenarkan Haiqal melawat pusara arwah ayahnya, Abdullah Kayan di Batu Pahat ketika dia berumur 12 atas alasan Haiqal akan menduduki UPSR malahan Uminya mengugut bahawa dia tidak akan memberikan wang belanja untuk Haiqal ke Batu Pahat.</p>
+            <p><strong>Alasan:</strong> Peristiwa ini merupakan peristiwa yang boleh dihindari oleh pembaca kerana perbuatan memendam dendam kesumat sehingga mementingkan diri dan memutuskan silaturahim antara anak dengan arwah bapa kandungnya tidak sepatutnya berlaku dalam sesebuah keluarga.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="novel-analysis-card">
+        <div class="novel-analysis-head"><span class="novel-bil">Bil. 5</span><h4>Perak</h4></div>
+        <p><strong>Arahan Peristiwa:</strong> Peristiwa cabaran dalam kehidupan yang boleh dijadikan teladan kepada pembaca.</p>
+        <p><strong>Kata Kunci:</strong> <span class="tag-pill">Cabaran / Teladan</span></p>
+        <div class="novel-versions">
+          <div class="novel-version dd">
+            <div class="novel-version-title">Disebalik Dinara</div>
+            <p><strong>Contoh Peristiwa:</strong> Farisha mendapat tahu bahawa Karl sanggup menanam pelbagai implan tanpa bius dan memberikan pelbagai ubat dalam tubuhnya semasa Farisha masih bayi sebagai bahan uji kajinya. Hal ini dikatakan demikian kerana Karl mahu menjadikan Farisha seorang yang genius.</p>
+            <p><strong>Alasan:</strong> Peristiwa ini merupakan peristiwa cabaran dalam kehidupan yang boleh dijadikan teladan kepada pembaca kerana kita hendaklah tabah dan bersabar tatkala berhadapan dengan kenyataan pahit yang mungkin sukar untuk ditelan.</p>
+          </div>
+          <div class="novel-version sd">
+            <div class="novel-version-title">Silir Daksina</div>
+            <p><strong>Contoh Peristiwa:</strong> Umi tidak membenarkan Haiqal melawat pusara arwah ayahnya, Abdullah Kayan di Batu Pahat ketika dia berumur 12 atas alasan Haiqal akan menduduki UPSR malahan Uminya mengugut bahawa dia tidak akan memberikan wang belanja untuk Haiqal ke Batu Pahat.</p>
+            <p><strong>Alasan:</strong> Peristiwa ini merupakan peristiwa cabaran dalam kehidupan yang boleh dijadikan teladan kepada pembaca kerana kita jangan menjadi pemutus silaturahim lebih-lebih lagi apabila melibatkan hubungan kekeluargaan.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="novel-analysis-card">
+        <div class="novel-analysis-head"><span class="novel-bil">Bil. 6</span><h4>Pulau Pinang</h4></div>
+        <p><strong>Arahan Peristiwa:</strong> Peristiwa yang menggambarkan semangat kerjasama dalam kalangan masyarakat sehingga dapat menyelesaikan sesuatu masalah.</p>
+        <p><strong>Kata Kunci:</strong> <span class="tag-pill">Kerjasama / Penyelesaian Masalah</span></p>
+        <div class="novel-versions">
+          <div class="novel-version dd">
+            <div class="novel-version-title">Disebalik Dinara</div>
+            <p><strong>Contoh Peristiwa:</strong> Azraai bekerjasama dengan Rosman untuk menjejaki adik angkatnya, Farisha yang telah diculik oleh Medina. Azraai telah menelefon Rosman dan Rosman telah menggunakan aplikasi telefon pintar secara tidak langsung berjaya menjejaki Farisha yang dibawa lari ke arah utara.</p>
+            <p><strong>Alasan:</strong> Peristiwa ini menggambarkan semangat kerjasama dalam kalangan masyarakat sehingga dapat menyelesaikan sesuatu masalah kerana gabungan usaha dan perkongsian maklumat antara rakan taulan berjaya menyelamatkan mangsa yang diculik dengan cepat.</p>
+          </div>
+          <div class="novel-version sd">
+            <div class="novel-version-title">Silir Daksina</div>
+            <p><strong>Contoh Peristiwa:</strong> Haiqal menghidupkan kumpulan zapin D'Purnama kembali. Haiqal telah bekerjasama dengan Pak Cik Bakar, Haji Salim dan Wak Arif untuk melaksanakan impian arwah ayahnya kerana dia tidak mempunyai pengetahuan mendalam tentang zapin.</p>
+            <p><strong>Alasan:</strong> Peristiwa ini menggambarkan semangat kerjasama dalam kalangan masyarakat sehingga dapat menyelesaikan sesuatu masalah kerana penggemblengan tenaga antara generasi muda dan golongan veteran kampung dapat menghidupkan semula warisan tradisional yang telah lama terhenti.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="novel-analysis-card">
+        <div class="novel-analysis-head"><span class="novel-bil">Bil. 7</span><h4>Kuala Lumpur</h4></div>
+        <p><strong>Arahan Peristiwa:</strong> Peristiwa yang menjadi cabaran dalam masyarakat.</p>
+        <p><strong>Kata Kunci:</strong> <span class="tag-pill">Cabaran Masyarakat</span></p>
+        <div class="novel-versions">
+          <div class="novel-version dd">
+            <div class="novel-version-title">Disebalik Dinara</div>
+            <p><strong>Contoh Peristiwa:</strong> Farisha mendapat tahu bahawa Karl sanggup menanam pelbagai implan tanpa bius dan memberikan pelbagai ubat dalam tubuhnya semasa Farisha masih bayi sebagai bahan uji kajinya. Hal ini dikatakan demikian kerana Karl mahu menjadikan Farisha seorang yang genius.</p>
+            <p><strong>Alasan:</strong> Peristiwa ini merupakan peristiwa yang menjadi cabaran dalam masyarakat kerana penyalahgunaan sains dan teknologi tanpa batas nilai kemanusiaan oleh individu yang ghairah mengejar kejayaan menjadi ancaman besar kepada keselamatan insan lain.</p>
+          </div>
+          <div class="novel-version sd">
+            <div class="novel-version-title">Silir Daksina</div>
+            <p><strong>Contoh Peristiwa:</strong> Umi tidak membenarkan Haiqal melawat pusara arwah ayahnya, Abdullah Kayan di Batu Pahat ketika dia berumur 12 atas alasan Haiqal akan menduduki UPSR malahan Uminya mengugut bahawa dia tidak akan memberikan wang belanja untuk Haiqal ke Batu Pahat.</p>
+            <p><strong>Alasan:</strong> Peristiwa ini merupakan peristiwa yang menjadi cabaran dalam masyarakat kerana konflik keretakan rumah tangga sering mengganggu emosi dan memberi tekanan psikologi kepada anak-anak yang tidak berdosa.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="novel-analysis-card">
+        <div class="novel-analysis-head"><span class="novel-bil">Bil. 8</span><h4>Johor</h4></div>
+        <p><strong>Arahan Peristiwa:</strong> Peristiwa yang dianggap menarik oleh pembaca.</p>
+        <p><strong>Kata Kunci:</strong> <span class="tag-pill">Menarik / Tarikan Pembaca</span></p>
+        <div class="novel-versions">
+          <div class="novel-version dd">
+            <div class="novel-version-title">Disebalik Dinara</div>
+            <p><strong>Contoh Peristiwa:</strong> Farisha mendapat tahu bahawa Karl sanggup menanam pelbagai implan tanpa bius dan memberikan pelbagai ubat dalam tubuhnya semasa Farisha masih bayi sebagai bahan uji kajinya. Hal ini dikatakan demikian kerana Karl mahu menjadikan Farisha seorang yang genius.</p>
+            <p><strong>Alasan:</strong> Peristiwa ini merupakan peristiwa yang dianggap menarik oleh pembaca kerana berupaya membangkitkan unsur kejutan dan perasaan ingin tahu pembaca tentang rahsia penderitaan watak utama semasa kecil.</p>
+          </div>
+          <div class="novel-version sd">
+            <div class="novel-version-title">Silir Daksina</div>
+            <p><strong>Contoh Peristiwa:</strong> Haiqal menghidupkan kumpulan zapin D'Purnama kembali. Haiqal telah bekerjasama dengan Pak Cik Bakar, Haji Salim dan Wak Arif untuk melaksanakan impian arwah ayahnya kerana dia tidak mempunyai pengetahuan mendalam tentang zapin.</p>
+            <p><strong>Alasan:</strong> Peristiwa ini merupakan peristiwa yang dianggap menarik oleh pembaca kerana memaparkan keindahan seni budaya tradisional serta keutuhan semangat kerjasama masyarakat kampung yang saling membantu.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="novel-analysis-card">
+        <div class="novel-analysis-head"><span class="novel-bil">Bil. 9</span><h4>Kelantan</h4></div>
+        <p><strong>Arahan Peristiwa:</strong> Peristiwa yang dapat memberikan motivasi kepada pembaca dan kemukakan pendapat.</p>
+        <p><strong>Kata Kunci:</strong> <span class="tag-pill">Motivasi / Pendapat</span></p>
+        <div class="novel-versions">
+          <div class="novel-version dd">
+            <div class="novel-version-title">Disebalik Dinara</div>
+            <p><strong>Contoh Peristiwa:</strong> Azraai bekerjasama dengan Rosman untuk menjejaki adik angkatnya, Farisha yang telah diculik oleh Medina. Azraai telah menelefon Rosman dan Rosman telah menggunakan aplikasi telefon pintar secara tidak langsung berjaya menjejaki Farisha yang dibawa lari ke arah utara.</p>
+            <p><strong>Alasan:</strong> Peristiwa ini merupakan peristiwa yang dapat memberikan motivasi kepada pembaca kerana menyedarkan pembaca bahawa penggunaan akal fikiran yang rasional dan kecanggihan teknologi dapat memberikan jalan keluar bagi mengatasi sesuatu masalah secara berkesan.</p>
+          </div>
+          <div class="novel-version sd">
+            <div class="novel-version-title">Silir Daksina</div>
+            <p><strong>Contoh Peristiwa:</strong> Haiqal menghidupkan kumpulan zapin D'Purnama kembali. Haiqal telah bekerjasama dengan Pak Cik Bakar, Haji Salim dan Wak Arif untuk melaksanakan impian arwah ayahnya kerana dia tidak mempunyai pengetahuan mendalam tentang zapin.</p>
+            <p><strong>Alasan:</strong> Peristiwa ini merupakan peristiwa yang dapat memberikan motivasi kepada pembaca kerana menyedarkan pembaca bahawa kekurangan pengalaman dalam sesuatu bidang bukanlah penghalang, sebaliknya tunjuk ajar daripada golongan pakar mampu menjayakan matlamat murni.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="novel-analysis-card">
+        <div class="novel-analysis-head"><span class="novel-bil">Bil. 10</span><h4>Sabah</h4></div>
+        <p><strong>Arahan Peristiwa:</strong> Peristiwa yang dapat menunjukkan kepentingan persahabatan.</p>
+        <p><strong>Kata Kunci:</strong> <span class="tag-pill">Nilai Persahabatan</span></p>
+        <div class="novel-versions">
+          <div class="novel-version dd">
+            <div class="novel-version-title">Disebalik Dinara</div>
+            <p><strong>Contoh Peristiwa:</strong> Azraai bekerjasama dengan Rosman untuk menjejaki adik angkatnya, Farisha yang telah diculik oleh Medina. Azraai telah menelefon Rosman dan Rosman telah menggunakan aplikasi telefon pintar secara tidak langsung berjaya menjejaki Farisha yang dibawa lari ke arah utara.</p>
+            <p><strong>Alasan:</strong> Peristiwa ini merupakan peristiwa yang dapat menunjukkan kepentingan persahabatan kerana pertolongan ikhlas seorang sahabat dalam situasi kecemasan amat berharga bagi menyelamatkan nyawa insan yang tersayang.</p>
+          </div>
+          <div class="novel-version sd">
+            <div class="novel-version-title">Silir Daksina</div>
+            <p><strong>Contoh Peristiwa:</strong> Ong See Hwa dan Lazim yang membantu Haiqal untuk menjejak warisan ayahnya, Abdullah bin Kayan. Ong See Hwa dan Lazim telah membawa Haiqal ke balai raya lama untuk melihat hasil karya ayahnya seperti sijil-sijil penghargaan yang tersimpan di bilik bacaan. Dengan bantuan Ong See Hwa dan Lazim, Haiqal dapat mengetahui sejarah hidup ayahnya.</p>
+            <p><strong>Alasan:</strong> Peristiwa ini merupakan peristiwa yang dapat menunjukkan kepentingan persahabatan kerana sahabat yang baik akan sentiasa bersedia menghulurkan bantuan untuk membantu kita ketika kesusahan.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="novel-analysis-card">
+        <div class="novel-analysis-head"><span class="novel-bil">Bil. 11</span><h4>Perlis</h4></div>
+        <p><strong>Arahan Peristiwa:</strong> Peristiwa yang memaparkan kesabaran watak dalam menghadapi dugaan hidup.</p>
+        <p><strong>Kata Kunci:</strong> <span class="tag-pill">Kesabaran / Dugaan Hidup</span></p>
+        <div class="novel-versions">
+          <div class="novel-version dd">
+            <div class="novel-version-title">Disebalik Dinara</div>
+            <p><strong>Contoh Peristiwa:</strong> Farisha mendapat tahu bahawa Karl sanggup menanam pelbagai implan tanpa bius dan memberikan pelbagai ubat dalam tubuhnya semasa Farisha masih bayi sebagai bahan uji kajinya. Hal ini dikatakan demikian kerana Karl mahu menjadikan Farisha seorang yang genius.</p>
+            <p><strong>Alasan:</strong> Peristiwa ini merupakan peristiwa yang memaparkan kesabaran watak dalam menghadapi dugaan hidup kerana watak tersebut tetap tabah, tenang, dan redha tatkala dikejutkan dengan kenyataan pahit bahawa dirinya dijadikan bahan uji kaji sejak bayi oleh bapa kandungnya sendiri.</p>
+          </div>
+          <div class="novel-version sd">
+            <div class="novel-version-title">Silir Daksina</div>
+            <p><strong>Contoh Peristiwa:</strong> Umi tidak membenarkan Haiqal melawat pusara arwah ayahnya, Abdullah Kayan di Batu Pahat ketika dia berumur 12 atas alasan Haiqal akan menduduki UPSR malahan Uminya mengugut bahawa dia tidak akan memberikan wang belanja untuk Haiqal ke Batu Pahat.</p>
+            <p><strong>Alasan:</strong> Peristiwa ini merupakan peristiwa yang memaparkan kesabaran watak dalam menghadapi dugaan hidup kerana watak tersebut berlapang dada dan bersabar hadapi sikap berkeras ibunya yang melarang niat murni untuk melawat pusara bapa kandungnya sendiri.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="novel-analysis-card">
+        <div class="novel-analysis-head"><span class="novel-bil">Bil. 12</span><h4>Kedah</h4></div>
+        <p><strong>Arahan Peristiwa:</strong> Peristiwa yang boleh menjadi ikutan kepada pembaca dalam mengekalkan keharmonian masyarakat.</p>
+        <p><strong>Kata Kunci:</strong> <span class="tag-pill">Teladan / Keharmonian</span></p>
+        <div class="novel-versions">
+          <div class="novel-version dd">
+            <div class="novel-version-title">Disebalik Dinara</div>
+            <p><strong>Contoh Peristiwa:</strong> Azraai bekerjasama dengan Rosman untuk menjejaki adik angkatnya, Farisha yang telah diculik oleh Medina. Azraai telah menelefon Rosman dan Rosman telah menggunakan aplikasi telefon pintar secara tidak langsung berjaya menjejaki Farisha yang dibawa lari ke arah utara.</p>
+            <p><strong>Alasan:</strong> Peristiwa ini merupakan peristiwa yang boleh menjadi ikutan kepada pembaca kerana kita hendaklah bersikap prihatin dan bersatu padu sesama rakan agar dapat menjamin keselamatan dan keharmonian masyarakat.</p>
+          </div>
+          <div class="novel-version sd">
+            <div class="novel-version-title">Silir Daksina</div>
+            <p><strong>Contoh Peristiwa:</strong> Ong See Hwa dan Lazim yang membantu Haiqal untuk menjejak warisan ayahnya, Abdullah bin Kayan. Ong See Hwa dan Lazim telah membawa Haiqal ke balai raya lama untuk melihat hasil karya ayahnya seperti sijil-sijil penghargaan yang tersimpan di bilik bacaan. Dengan bantuan Ong See Hwa dan Lazim, Haiqal dapat mengetahui sejarah hidup ayahnya.</p>
+            <p><strong>Alasan:</strong> Peristiwa ini merupakan peristiwa yang boleh menjadi ikutan kepada pembaca kerana kita hendaklah saling membantu tanpa mengira bangsa agar dapat mengukuhkan silaturahim masyarakat.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="novel-analysis-card">
+        <div class="novel-analysis-head"><span class="novel-bil">Bil. 13</span><h4>Pahang</h4></div>
+        <p><strong>Arahan Peristiwa:</strong> Peristiwa yang menunjukkan kesungguhan watak menyelesaikan masalah.</p>
+        <p><strong>Kata Kunci:</strong> <span class="tag-pill">Kesungguhan / Penyelesaian Masalah</span></p>
+        <div class="novel-versions">
+          <div class="novel-version dd">
+            <div class="novel-version-title">Disebalik Dinara</div>
+            <p><strong>Contoh Peristiwa:</strong> Azraai bekerjasama dengan Rosman untuk menjejaki adik angkatnya, Farisha yang telah diculik oleh Medina. Azraai telah menelefon Rosman dan Rosman telah menggunakan aplikasi telefon pintar secara tidak langsung berjaya menjejaki Farisha yang dibawa lari ke arah utara.</p>
+            <p><strong>Alasan:</strong> Peristiwa ini merupakan peristiwa yang menunjukkan kesungguhan watak menyelesaikan masalah kerana watak tersebut berusaha gigih menggunakan segenap ikhtiar dan kelebihan teknologi untuk membantu orang yang ditimpa kesusahan.</p>
+          </div>
+          <div class="novel-version sd">
+            <div class="novel-version-title">Silir Daksina</div>
+            <p><strong>Contoh Peristiwa:</strong> Haiqal menghidupkan kumpulan zapin D'Purnama kembali. Haiqal telah bekerjasama dengan Pak Cik Bakar, Haji Salim dan Wak Arif untuk melaksanakan impian arwah ayahnya kerana dia tidak mempunyai pengetahuan mendalam tentang zapin.</p>
+            <p><strong>Alasan:</strong> Peristiwa ini merupakan peristiwa yang menunjukkan kesungguhan watak menyelesaikan masalah kerana watak tersebut berusaha gigih mengumpulkan semula penggiat seni dan berguru dengan orang tempatan demi menjayakan impian warisan arwah bapanya.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="novel-analysis-card">
+        <div class="novel-analysis-head"><span class="novel-bil">Bil. 14</span><h4>Terengganu</h4></div>
+        <p><strong>Arahan Peristiwa:</strong> Peristiwa yang menyentuh hati pembaca.</p>
+        <p><strong>Kata Kunci:</strong> <span class="tag-pill">Emosi (Menyentuh hati)</span></p>
+        <div class="novel-versions">
+          <div class="novel-version dd">
+            <div class="novel-version-title">Disebalik Dinara</div>
+            <p><strong>Contoh Peristiwa:</strong> Farisha mendapat tahu bahawa Karl sanggup menanam pelbagai implan tanpa bius dan memberikan pelbagai ubat dalam tubuhnya semasa Farisha masih bayi sebagai bahan uji kajinya. Hal ini dikatakan demikian kerana Karl mahu menjadikan Farisha seorang yang genius.</p>
+            <p><strong>Alasan:</strong> Peristiwa ini merupakan peristiwa yang menyentuh hati pembaca kerana memaparkan penderitaan seorang anak kecil yang dijadikan bahan uji kaji tanpa belas kasihan oleh bapa kandungnya sendiri menimbulkan rasa pilu dan simpati pembaca.</p>
+          </div>
+          <div class="novel-version sd">
+            <div class="novel-version-title">Silir Daksina</div>
+            <p><strong>Contoh Peristiwa:</strong> Umi tidak membenarkan Haiqal melawat pusara arwah ayahnya, Abdullah Kayan di Batu Pahat ketika dia berumur 12 atas alasan Haiqal akan menduduki UPSR malahan Uminya mengugut bahawa dia tidak akan memberikan wang belanja untuk Haiqal ke Batu Pahat.</p>
+            <p><strong>Alasan:</strong> Peristiwa ini merupakan peristiwa yang menyentuh hati pembaca kerana kesedihan seorang anak yang diragut haknya untuk menziarahi pusara bapa kandungnya akibat persengketaan ibu bapanya.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="personal-note" data-note-key="komsas">
+        <div class="personal-note-label">
+          <span>NOTA TAMBAHAN SAYA</span>
+          <span class="personal-note-status">Disimpan</span>
+        </div>
+        <textarea placeholder="Taip nota khusus untuk novel/antologi/drama yang awak belajar di sekolah — watak, tema, contoh jawapan, dll."></textarea>
+      </div>
+    </section>
+
+    <footer>
+      Nota rujukan ini disediakan untuk bantuan pembelajaran persendirian. Sentiasa rujuk guru Bahasa Melayu dan buku teks KSSM rasmi untuk maklumat terkini serta format peperiksaan semasa.
+    </footer>
+  </main>
+</div>
+
+<script>
+  const menuBtn = document.getElementById('menuBtn');
+  const sidebar = document.getElementById('sidebar');
+  const scrim = document.getElementById('scrim');
+  const themeToggle = document.getElementById('themeToggle');
+
+  function openMenu() {
+    sidebar.classList.add('open');
+    scrim.classList.add('show');
+  }
+  function closeMenu() {
+    sidebar.classList.remove('open');
+    scrim.classList.remove('show');
+  }
+  menuBtn && menuBtn.addEventListener('click', openMenu);
+  scrim && scrim.addEventListener('click', closeMenu);
+  sidebar.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+
+  themeToggle.addEventListener('click', () => {
+    const root = document.documentElement;
+    const current = root.getAttribute('data-theme');
+    if (current === 'dark') {
+      root.setAttribute('data-theme', 'light');
+    } else if (current === 'light') {
+      root.removeAttribute('data-theme');
+    } else {
+      root.setAttribute('data-theme', 'dark');
+    }
+    try {
+      localStorage.setItem('nota-bm-theme', root.getAttribute('data-theme') || 'auto');
+    } catch (e) {}
+  });
+
+  try {
+    const saved = localStorage.getItem('nota-bm-theme');
+    if (saved && saved !== 'auto') {
+      document.documentElement.setAttribute('data-theme', saved);
+    }
+  } catch (e) {}
+
+  // ---- Nota peribadi (auto-simpan ke storan pelayar ini) ----
+  document.querySelectorAll('.personal-note').forEach(box => {
+    const key = 'nota-bm-personal-' + box.getAttribute('data-note-key');
+    const textarea = box.querySelector('textarea');
+    const status = box.querySelector('.personal-note-status');
+    let saveTimer = null;
+
+    try {
+      const savedValue = localStorage.getItem(key);
+      if (savedValue) textarea.value = savedValue;
+    } catch (e) {
+      status.textContent = 'Storan tidak tersedia di pelayar ini';
+      status.classList.add('show');
+    }
+
+    textarea.addEventListener('input', () => {
+      clearTimeout(saveTimer);
+      saveTimer = setTimeout(() => {
+        try {
+          localStorage.setItem(key, textarea.value);
+          status.textContent = 'Disimpan';
+          status.classList.add('show');
+          clearTimeout(status._hideTimer);
+          status._hideTimer = setTimeout(() => status.classList.remove('show'), 1500);
+        } catch (e) {
+          status.textContent = 'Gagal simpan — storan penuh/tidak tersedia';
+          status.classList.add('show');
+        }
+      }, 400);
+    });
+  });
+</script>
+
+</body>
+</html>
