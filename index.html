@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nota BM SPM — Rujukan Bahasa Melayu</title>
+<title>Nota BM — SPM &amp; Menengah Rendah</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -62,7 +62,6 @@
   }
 
   * { box-sizing: border-box; }
-
   html { scroll-behavior: smooth; }
 
   body {
@@ -72,7 +71,10 @@
     font-family: 'Karla', system-ui, sans-serif;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
+    text-transform: uppercase;
   }
+
+  input, textarea, button { text-transform: uppercase; }
 
   h1, h2, h3, h4 {
     font-family: 'Fraunces', Georgia, serif;
@@ -83,47 +85,54 @@
 
   a { color: var(--primary); }
 
-  .layout {
+  /* ---------- Top-level big tabs ---------- */
+  .top-tabs {
     display: flex;
-    min-height: 100vh;
+    gap: 10px;
+    padding: 18px 24px 0;
+    background: var(--bg-raised);
+    border-bottom: 2px solid var(--line);
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    flex-wrap: wrap;
   }
+  .top-tab-btn {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1.05rem;
+    background: none;
+    border: none;
+    color: var(--ink-soft);
+    padding: 14px 18px 16px;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    text-transform: uppercase;
+  }
+  .top-tab-btn.active {
+    color: var(--primary);
+    border-bottom: 3px solid var(--primary);
+  }
+  .top-tab-btn:hover { color: var(--ink); }
+
+  .top-tab-panel { display: none; }
+  .top-tab-panel.active { display: block; }
+
+  .layout { display: flex; min-height: calc(100vh - 60px); }
 
   /* ---------- Sidebar ---------- */
   .sidebar {
-    width: 270px;
+    width: 280px;
     flex-shrink: 0;
     background: var(--bg-raised);
     border-right: 1px solid var(--line);
-    padding: 28px 22px 40px;
+    padding: 24px 22px 40px;
     position: sticky;
-    top: 0;
-    height: 100vh;
+    top: 60px;
+    height: calc(100vh - 60px);
     overflow-y: auto;
   }
-
-  .brand {
-    display: flex;
-    align-items: baseline;
-    gap: 8px;
-    margin-bottom: 6px;
-  }
-
-  .brand-mark {
-    font-family: 'Fraunces', serif;
-    font-weight: 700;
-    font-size: 1.5rem;
-    color: var(--primary);
-  }
-
-  .brand-sub {
-    font-size: 0.78rem;
-    color: var(--ink-soft);
-    margin-bottom: 28px;
-    letter-spacing: 0.02em;
-  }
-
-  .nav-group { margin-bottom: 22px; }
-
+  .nav-group { margin-bottom: 20px; }
   .nav-group-title {
     font-size: 0.72rem;
     color: var(--accent);
@@ -132,7 +141,13 @@
     margin-bottom: 6px;
     padding-left: 2px;
   }
-
+  .nav-group-sub {
+    font-size: 0.68rem;
+    color: var(--ink-soft);
+    font-weight: 700;
+    margin: 10px 0 4px 2px;
+    letter-spacing: 0.03em;
+  }
   .nav-link {
     display: block;
     padding: 6px 10px;
@@ -140,21 +155,16 @@
     border-radius: 6px;
     color: var(--ink-soft);
     text-decoration: none;
-    font-size: 0.92rem;
-    border-left: 2px solid transparent;
+    font-size: 0.88rem;
   }
-
-  .nav-link:hover {
-    background: var(--primary-soft);
-    color: var(--ink);
-  }
+  .nav-link:hover { background: var(--primary-soft); color: var(--ink); }
 
   .theme-toggle {
     margin-top: 10px;
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     color: var(--ink-soft);
     background: none;
     border: 1px solid var(--line);
@@ -164,51 +174,29 @@
   }
   .theme-toggle:hover { border-color: var(--accent); color: var(--ink); }
 
-  .menu-btn {
-    display: none;
-  }
+  .menu-btn { display: none; }
 
   /* ---------- Main content ---------- */
   main {
     flex: 1;
     min-width: 0;
-    padding: 56px 48px 120px;
+    padding: 48px 48px 120px;
     max-width: 880px;
   }
+  main.no-sidebar { max-width: 760px; margin: 0 auto; }
 
   header.hero {
-    margin-bottom: 56px;
-    padding-bottom: 32px;
+    margin-bottom: 48px;
+    padding-bottom: 28px;
     border-bottom: 2px solid var(--line);
   }
+  .hero-eyebrow { color: var(--rust); font-weight: 600; font-size: 0.9rem; margin-bottom: 10px; }
+  header.hero h1 { font-size: clamp(1.7rem, 4vw, 2.5rem); font-weight: 600; max-width: 20ch; }
+  header.hero p { max-width: 58ch; color: var(--ink-soft); font-size: 1rem; margin-top: 12px; }
 
-  .hero-eyebrow {
-    color: var(--rust);
-    font-weight: 600;
-    font-size: 0.95rem;
-    margin-bottom: 10px;
-  }
-
-  header.hero h1 {
-    font-size: clamp(2rem, 4vw, 2.9rem);
-    font-weight: 600;
-    max-width: 14ch;
-  }
-
-  header.hero p {
-    max-width: 58ch;
-    color: var(--ink-soft);
-    font-size: 1.05rem;
-    margin-top: 14px;
-  }
-
-  section.topic {
-    margin-bottom: 72px;
-    scroll-margin-top: 24px;
-  }
-
+  section.topic { margin-bottom: 64px; scroll-margin-top: 24px; }
   section.topic > h2 {
-    font-size: 1.9rem;
+    font-size: 1.6rem;
     font-weight: 600;
     color: var(--primary);
     border-bottom: 2px solid var(--primary);
@@ -216,531 +204,181 @@
     padding-bottom: 4px;
     margin-bottom: 8px;
   }
+  .topic-intro { color: var(--ink-soft); max-width: 62ch; margin-bottom: 28px; font-size: 0.94rem; }
 
-  .topic-intro {
-    color: var(--ink-soft);
-    max-width: 62ch;
-    margin-bottom: 32px;
-  }
+  h3.sub { font-size: 1.15rem; font-weight: 600; margin-top: 36px; scroll-margin-top: 24px; }
+  h4.subsub { font-family: 'Karla', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--accent); margin-top: 20px; }
 
-  h3.sub {
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin-top: 40px;
-    scroll-margin-top: 24px;
-  }
-
-  h4.subsub {
-    font-family: 'Karla', sans-serif;
-    font-weight: 700;
-    font-size: 0.95rem;
-    color: var(--accent);
-    margin-top: 22px;
-  }
-
-  p { margin: 0 0 14px; max-width: 68ch; }
-
-  ul, ol { padding-left: 22px; margin: 0 0 16px; max-width: 64ch; }
+  p { margin: 0 0 14px; max-width: 68ch; font-size: 0.94rem; }
+  ul, ol { padding-left: 22px; margin: 0 0 16px; max-width: 64ch; font-size: 0.94rem; }
   li { margin-bottom: 6px; }
 
-  /* card / box components */
-  .card {
-    background: var(--bg-raised);
-    border: 1px solid var(--line);
-    border-radius: 10px;
-    padding: 18px 22px;
-    margin: 18px 0;
-    box-shadow: 0 2px 10px var(--shadow);
-  }
+  .card { background: var(--bg-raised); border: 1px solid var(--line); border-radius: 10px; padding: 16px 20px; margin: 16px 0; box-shadow: 0 2px 10px var(--shadow); }
 
-  .example {
-    background: var(--primary-soft);
-    border-left: 3px solid var(--primary);
-    padding: 10px 16px;
-    margin: 12px 0;
-    border-radius: 0 8px 8px 0;
-    font-size: 0.95rem;
-  }
+  .example { background: var(--primary-soft); border-left: 3px solid var(--primary); padding: 10px 16px; margin: 12px 0; border-radius: 0 8px 8px 0; font-size: 0.88rem; }
   .example strong { color: var(--primary); }
 
-  .wrong-right {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin: 14px 0;
-  }
-  .wrong-right > div {
-    padding: 10px 14px;
-    border-radius: 8px;
-    font-size: 0.93rem;
-  }
+  .wrong-right { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 14px 0; }
+  .wrong-right > div { padding: 10px 14px; border-radius: 8px; font-size: 0.86rem; }
   .wrong { background: var(--rust-soft); border: 1px solid var(--rust); }
   .right { background: var(--primary-soft); border: 1px solid var(--primary); }
-  .wrong-right .tag { font-weight: 700; font-size: 0.78rem; display: block; margin-bottom: 4px; letter-spacing: 0.03em; }
+  .wrong-right .tag { font-weight: 700; font-size: 0.72rem; display: block; margin-bottom: 4px; letter-spacing: 0.03em; }
   .wrong .tag { color: var(--rust); }
   .right .tag { color: var(--primary); }
 
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 16px 0 24px;
-    font-size: 0.93rem;
-  }
-  th, td {
-    text-align: left;
-    padding: 9px 12px;
-    border-bottom: 1px solid var(--line);
-    vertical-align: top;
-  }
-  th {
-    color: var(--accent);
-    font-size: 0.78rem;
-    letter-spacing: 0.04em;
-    font-weight: 700;
-  }
+  table { width: 100%; border-collapse: collapse; margin: 14px 0 22px; font-size: 0.85rem; }
+  th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { color: var(--accent); font-size: 0.72rem; letter-spacing: 0.03em; font-weight: 700; }
+  .table-scroll { overflow-x: auto; }
 
-  .peribahasa-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 14px;
-    margin: 20px 0;
-  }
-  .peribahasa-card {
-    background: var(--bg-raised);
-    border: 1px solid var(--line);
-    border-left: 3px solid var(--rust);
-    border-radius: 0 8px 8px 0;
-    padding: 14px 16px;
-  }
-  .peribahasa-card .p-text {
-    font-family: 'Fraunces', serif;
-    font-weight: 600;
-    font-size: 1.02rem;
-    color: var(--ink);
-    margin-bottom: 6px;
-  }
-  .peribahasa-card .p-meaning {
-    font-size: 0.88rem;
-    color: var(--ink-soft);
-  }
+  .peribahasa-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 14px; margin: 18px 0; }
+  .peribahasa-card { background: var(--bg-raised); border: 1px solid var(--line); border-left: 3px solid var(--rust); border-radius: 0 8px 8px 0; padding: 14px 16px; }
+  .peribahasa-card .p-text { font-family: 'Fraunces', serif; font-weight: 600; font-size: 0.95rem; color: var(--ink); margin-bottom: 6px; }
+  .peribahasa-card .p-meaning { font-size: 0.8rem; color: var(--ink-soft); }
 
-  .format-steps {
-    counter-reset: step;
-    list-style: none;
-    padding-left: 0;
-  }
-  .format-steps li {
-    counter-increment: step;
-    position: relative;
-    padding-left: 34px;
-    margin-bottom: 10px;
-  }
+  .format-steps { counter-reset: step; list-style: none; padding-left: 0; }
+  .format-steps li { counter-increment: step; position: relative; padding-left: 34px; margin-bottom: 10px; }
   .format-steps li::before {
-    content: counter(step);
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
-    background: var(--accent-soft);
-    color: var(--accent);
-    font-weight: 700;
-    font-size: 0.78rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    content: counter(step); position: absolute; left: 0; top: 0; width: 22px; height: 22px;
+    border-radius: 50%; background: var(--accent-soft); color: var(--accent); font-weight: 700;
+    font-size: 0.7rem; display: flex; align-items: center; justify-content: center;
   }
 
-  .note {
-    background: var(--accent-soft);
-    border: 1px dashed var(--accent);
-    border-radius: 8px;
-    padding: 12px 16px;
-    font-size: 0.9rem;
-    color: var(--ink-soft);
-    margin: 18px 0;
-  }
+  .note { background: var(--accent-soft); border: 1px dashed var(--accent); border-radius: 8px; padding: 12px 16px; font-size: 0.84rem; color: var(--ink-soft); margin: 18px 0; }
   .note strong { color: var(--accent); }
 
-  .novel-source-note {
-    font-size: 0.82rem;
-    color: var(--ink-soft);
-    margin-bottom: 20px;
-  }
-
-  .novel-analysis-card {
-    background: var(--bg-raised);
-    border: 1px solid var(--line);
-    border-radius: 10px;
-    padding: 18px 20px;
-    margin: 18px 0;
-  }
-  .novel-analysis-head {
-    display: flex;
-    align-items: baseline;
-    gap: 10px;
-    margin-bottom: 6px;
-    flex-wrap: wrap;
-  }
-  .novel-bil {
-    font-size: 0.75rem;
-    color: var(--ink-soft);
-    font-weight: 700;
-  }
-  .novel-analysis-head h4 {
-    margin: 0;
-    font-family: 'Fraunces', serif;
-    font-weight: 600;
-    font-size: 1.15rem;
-    color: var(--ink);
-  }
-  .novel-analysis-card p {
-    max-width: none;
-    margin: 0 0 8px;
-    font-size: 0.94rem;
-  }
-  .tag-pill {
-    display: inline-block;
-    background: var(--accent-soft);
-    color: var(--accent);
-    padding: 2px 12px;
-    border-radius: 20px;
-    font-size: 0.82rem;
-    font-weight: 700;
-  }
-  .novel-versions {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
-    margin-top: 14px;
-  }
-  .novel-version {
-    border-radius: 8px;
-    padding: 12px 14px;
-    font-size: 0.9rem;
-  }
+  .novel-source-note { font-size: 0.76rem; color: var(--ink-soft); margin-bottom: 18px; }
+  .novel-analysis-card { background: var(--bg-raised); border: 1px solid var(--line); border-radius: 10px; padding: 16px 20px; margin: 16px 0; }
+  .novel-analysis-head { display: flex; align-items: baseline; gap: 10px; margin-bottom: 6px; flex-wrap: wrap; }
+  .novel-bil { font-size: 0.7rem; color: var(--ink-soft); font-weight: 700; }
+  .novel-analysis-head h4 { margin: 0; font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.05rem; color: var(--ink); }
+  .novel-analysis-card p { max-width: none; margin: 0 0 8px; font-size: 0.86rem; }
+  .tag-pill { display: inline-block; background: var(--accent-soft); color: var(--accent); padding: 2px 12px; border-radius: 20px; font-size: 0.74rem; font-weight: 700; }
+  .novel-versions { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 12px; }
+  .novel-version { border-radius: 8px; padding: 12px 14px; font-size: 0.82rem; }
   .novel-version.dd { background: var(--primary-soft); border-left: 3px solid var(--primary); }
   .novel-version.sd { background: var(--blue-soft); border-left: 3px solid var(--blue); }
-  .novel-version-title {
-    font-weight: 700;
-    font-size: 0.85rem;
-    margin-bottom: 8px;
-  }
+  .novel-version-title { font-weight: 700; font-size: 0.76rem; margin-bottom: 8px; }
   .novel-version.dd .novel-version-title { color: var(--primary); }
   .novel-version.sd .novel-version-title { color: var(--blue); }
   .novel-version p:last-child { margin-bottom: 0; }
+  @media (max-width: 700px) { .novel-versions { grid-template-columns: 1fr; } }
 
-  @media (max-width: 700px) {
-    .novel-versions { grid-template-columns: 1fr; }
-  }
-
-  .personal-note {
-    margin-top: 32px;
-    background: var(--bg-raised);
-    border: 1px solid var(--line);
-    border-radius: 10px;
-    padding: 16px 18px;
-  }
-  .personal-note-label {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 8px;
-  }
-  .personal-note-label span {
-    font-size: 0.8rem;
-    font-weight: 700;
-    letter-spacing: 0.03em;
-    color: var(--accent);
-  }
-  .personal-note-status {
-    font-size: 0.75rem;
-    color: var(--ink-soft);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
+  .personal-note { margin-top: 28px; background: var(--bg-raised); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; }
+  .personal-note-label { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+  .personal-note-label span { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.03em; color: var(--accent); }
+  .personal-note-status { font-size: 0.7rem; color: var(--ink-soft); opacity: 0; transition: opacity 0.3s ease; }
   .personal-note-status.show { opacity: 1; }
   .personal-note textarea {
-    width: 100%;
-    min-height: 90px;
-    resize: vertical;
-    background: var(--bg);
-    color: var(--ink);
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    padding: 10px 12px;
-    font-family: 'Karla', sans-serif;
-    font-size: 0.92rem;
-    line-height: 1.55;
+    width: 100%; min-height: 90px; resize: vertical; background: var(--bg); color: var(--ink);
+    border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; font-family: 'Karla', sans-serif;
+    font-size: 0.86rem; line-height: 1.55;
   }
-  .personal-note textarea:focus {
-    outline: none;
-    border-color: var(--accent);
-  }
+  .personal-note textarea:focus { outline: none; border-color: var(--accent); }
   .personal-note textarea::placeholder { color: var(--ink-soft); opacity: 0.7; }
 
-  footer {
-    color: var(--ink-soft);
-    font-size: 0.85rem;
-    border-top: 1px solid var(--line);
-    padding-top: 20px;
-    margin-top: 40px;
-  }
+  .empty-state { text-align: center; padding: 60px 20px; color: var(--ink-soft); }
+  .empty-state .icon { font-size: 2.5rem; margin-bottom: 14px; }
+  .empty-state h2 { color: var(--ink); font-size: 1.3rem; }
+  .empty-state p { max-width: 46ch; margin: 10px auto 0; }
 
-  /* mobile */
+  footer { color: var(--ink-soft); font-size: 0.78rem; border-top: 1px solid var(--line); padding-top: 20px; margin-top: 36px; }
+
   @media (max-width: 860px) {
     .sidebar {
-      position: fixed;
-      z-index: 40;
-      left: 0; top: 0;
-      transform: translateX(-100%);
-      transition: transform 0.25s ease;
-      width: 78vw;
-      max-width: 300px;
-      box-shadow: 4px 0 24px var(--shadow);
+      position: fixed; z-index: 40; left: 0; top: 0; transform: translateX(-100%);
+      transition: transform 0.25s ease; width: 78vw; max-width: 300px; box-shadow: 4px 0 24px var(--shadow);
+      height: 100vh;
     }
     .sidebar.open { transform: translateX(0); }
     .menu-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      position: fixed;
-      top: 14px;
-      left: 14px;
-      z-index: 50;
-      background: var(--bg-raised);
-      border: 1px solid var(--line);
-      border-radius: 20px;
-      padding: 8px 14px;
-      font-family: 'Karla', sans-serif;
-      font-size: 0.85rem;
-      color: var(--ink);
-      cursor: pointer;
+      display: inline-flex; align-items: center; gap: 8px; position: fixed; top: 70px; left: 14px; z-index: 50;
+      background: var(--bg-raised); border: 1px solid var(--line); border-radius: 20px; padding: 8px 14px;
+      font-family: 'Karla', sans-serif; font-size: 0.8rem; color: var(--ink); cursor: pointer; text-transform: uppercase;
     }
-    .scrim {
-      display: none;
-      position: fixed; inset: 0;
-      background: rgba(0,0,0,0.35);
-      z-index: 35;
-    }
+    .scrim { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.35); z-index: 35; }
     .scrim.show { display: block; }
     main { padding: 84px 20px 100px; }
     .wrong-right { grid-template-columns: 1fr; }
+    .top-tabs { padding: 12px 14px 0; }
+    .top-tab-btn { padding: 10px 12px 12px; font-size: 0.92rem; }
   }
 </style>
 </head>
 <body>
 
+<div class="top-tabs" id="topTabs">
+  <button class="top-tab-btn active" data-target="panel-spm">Nota BM SPM</button>
+  <button class="top-tab-btn" data-target="panel-rendah">Nota BM Menengah Rendah</button>
+</div>
+
+<!-- ============================================================ -->
+<!-- TAB 1: NOTA BM SPM                                            -->
+<!-- ============================================================ -->
+<div class="top-tab-panel active" id="panel-spm">
 <button class="menu-btn" id="menuBtn" aria-label="Buka menu">☰ Topik</button>
 <div class="scrim" id="scrim"></div>
 
 <div class="layout">
-
   <aside class="sidebar" id="sidebar">
-    <div class="brand">
-      <span class="brand-mark">Nota BM</span>
-    </div>
-    <div class="brand-sub">Rujukan Bahasa Melayu SPM</div>
-
     <nav>
       <div class="nav-group">
-        <div class="nav-group-title">TATABAHASA</div>
-        <a class="nav-link" href="#tatabahasa">Pengenalan</a>
-        <a class="nav-link" href="#golongan-kata">Golongan Kata</a>
-        <a class="nav-link" href="#imbuhan">Imbuhan</a>
-        <a class="nav-link" href="#ayat">Jenis &amp; Ragam Ayat</a>
-        <a class="nav-link" href="#kesalahan">Kesalahan Lazim</a>
-      </div>
-      <div class="nav-group">
-        <div class="nav-group-title">PERIBAHASA</div>
-        <a class="nav-link" href="#peribahasa">Kategori Peribahasa</a>
-        <a class="nav-link" href="#senarai-peribahasa">Senarai &amp; Maksud</a>
-      </div>
-      <div class="nav-group">
-        <div class="nav-group-title">KARANGAN</div>
-        <a class="nav-link" href="#karangan">Jenis Karangan</a>
+        <div class="nav-group-title">Kertas 1</div>
+        <div class="nav-group-sub">Karangan A (Berformat)</div>
         <a class="nav-link" href="#surat-rasmi">Surat Kiriman Rasmi</a>
-        <a class="nav-link" href="#surat-tidak-rasmi">Surat Tidak Rasmi</a>
+        <a class="nav-link" href="#surat-tidak-rasmi">Surat Kiriman Tidak Rasmi</a>
         <a class="nav-link" href="#laporan">Laporan</a>
         <a class="nav-link" href="#syarahan">Syarahan / Ceramah</a>
         <a class="nav-link" href="#rencana">Rencana &amp; Dialog</a>
-        <a class="nav-link" href="#tidak-berformat">Karangan Tidak Berformat</a>
+        <div class="nav-group-sub">Karangan B (Tidak Berformat)</div>
+        <a class="nav-link" href="#karangan-b">Struktur &amp; Contoh</a>
         <a class="nav-link" href="#tips-karangan">Tip Markah Tinggi</a>
       </div>
+
       <div class="nav-group">
-        <div class="nav-group-title">KOMSAS</div>
-        <a class="nav-link" href="#komsas">Cara Kuasai Komsas</a>
-        <a class="nav-link" href="#unsur-komsas">Unsur-Unsur Utama</a>
-        <a class="nav-link" href="#teknik-jawab">Teknik Jawab Soalan</a>
-        <a class="nav-link" href="#analisis-novel-ppc">Analisis Soalan Novel PPC 2026</a>
+        <div class="nav-group-title">Kertas 2 · Sistem Bahasa</div>
+        <a class="nav-link" href="#morfologi">Morfologi</a>
+        <a class="nav-link" href="#sintaksis">Sintaksis</a>
+        <a class="nav-link" href="#penyuntingan">Penyuntingan</a>
+        <a class="nav-link" href="#bm-klasik">BM Klasik → BM Standard</a>
+        <a class="nav-link" href="#peribahasa">Peribahasa</a>
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-group-title">Kertas 2 · Pemahaman</div>
+        <a class="nav-link" href="#petikan-umum">Petikan Umum</a>
+        <a class="nav-link" href="#petikan-sastera">Petikan Sastera</a>
+        <a class="nav-link" href="#pemahaman-novel">Pemahaman Novel &amp; Peristiwa Novel</a>
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-group-title">Kertas 2 · Rumusan</div>
+        <a class="nav-link" href="#rumusan">Format &amp; Teknik Rumusan</a>
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-group-title">Kertas 3</div>
+        <a class="nav-link" href="#ujian-bertutur">Ujian Bertutur</a>
+        <a class="nav-link" href="#ujian-mendengar">Ujian Mendengar</a>
       </div>
     </nav>
-
-    <button class="theme-toggle" id="themeToggle">◐ Tukar tema</button>
+    <button class="theme-toggle" id="themeToggle">◐ Tukar Tema</button>
   </aside>
 
   <main>
     <header class="hero">
-      <div class="hero-eyebrow">Nota Rujukan · Bahasa Melayu SMK</div>
-      <h1>Semua yang perlu untuk BM SPM, dalam satu tempat</h1>
-      <p>Tatabahasa, peribahasa, format karangan dan teknik komsas — disusun dengan contoh supaya senang diulang kaji bila-bila masa.</p>
+      <div class="hero-eyebrow">Nota Rujukan · Bahasa Melayu SPM</div>
+      <h1>Susunan Nota Ikut Kertas SPM</h1>
+      <p>Kertas 1, Kertas 2 (Sistem Bahasa, Pemahaman, Rumusan) dan Kertas 3 — disusun ikut struktur peperiksaan sebenar.</p>
     </header>
 
-    <!-- ================= TATABAHASA ================= -->
-    <section class="topic" id="tatabahasa">
-      <h2>Tatabahasa</h2>
-      <p class="topic-intro">Tatabahasa ialah asas kepada Kertas 1 (soalan objektif/struktur) dan turut dinilai dalam karangan Kertas 2. Kuasai golongan kata dan imbuhan dahulu — selebihnya lebih mudah.</p>
-
-      <h3 class="sub" id="golongan-kata">Golongan Kata</h3>
-      <p>Bahasa Melayu mempunyai empat golongan kata utama:</p>
-
-      <h4 class="subsub">1. Kata Nama</h4>
-      <p>Merujuk kepada orang, tempat, benda atau konsep.</p>
-      <ul>
-        <li><strong>Kata Nama Am</strong> — merujuk benda secara umum. <em>Contoh:</em> guru, bandar, kerusi, negara.</li>
-        <li><strong>Kata Nama Khas</strong> — merujuk nama khusus, ditulis dengan huruf besar. <em>Contoh:</em> Melaka, Sungai Pahang, Tun Mahathir.</li>
-        <li><strong>Kata Ganti Nama</strong> — menggantikan kata nama. <em>Diri:</em> saya, kami, kita, awak, mereka. <em>Tunjuk:</em> ini, itu, sini, situ.</li>
-      </ul>
-
-      <h4 class="subsub">2. Kata Kerja</h4>
-      <ul>
-        <li><strong>Kata Kerja Transitif</strong> — memerlukan objek selepasnya. <em>Contoh:</em> Ali <u>membaca</u> buku.</li>
-        <li><strong>Kata Kerja Tak Transitif</strong> — tidak memerlukan objek. <em>Contoh:</em> Adik <u>menangis</u>.</li>
-      </ul>
-
-      <h4 class="subsub">3. Kata Adjektif</h4>
-      <p>Menerangkan sifat atau keadaan kata nama. <em>Contoh:</em> cantik, tinggi, pantas, sedih. Boleh digandakan untuk penekanan: <em>cantik-cantik, tinggi-tinggi</em>.</p>
-
-      <h4 class="subsub">4. Kata Tugas</h4>
-      <p>Kata yang menghubungkan atau memberi fungsi tatabahasa, tidak boleh menerima imbuhan.</p>
-      <ul>
-        <li><strong>Kata Hubung</strong> — dan, atau, tetapi, kerana, walaupun</li>
-        <li><strong>Kata Seru</strong> — Wah!, Aduh!, Amboi!</li>
-        <li><strong>Kata Perintah</strong> — sila, jangan, usah, tolong</li>
-        <li><strong>Kata Sendi Nama</strong> — di, ke, dari, pada, untuk, dengan</li>
-      </ul>
-
-      <div class="note"><strong>Tip:</strong> Dalam Kertas 1, soalan sering menguji sama ada perkataan tergolong dalam kata nama am/khas atau kata kerja transitif/tak transitif — cuba kenal pasti sama ada perkataan itu perlukan objek.</div>
-
-      <h3 class="sub" id="imbuhan">Imbuhan</h3>
-      <p>Imbuhan mengubah golongan kata dan makna kata dasar. Terdapat empat jenis:</p>
-
-      <table>
-        <tr><th>Jenis</th><th>Contoh Imbuhan</th><th>Contoh Perkataan</th></tr>
-        <tr><td>Awalan</td><td>meN-, ber-, di-, ter-, se-, peN-, ke-</td><td>membaca, bermain, dimakan, terjatuh, sebuah</td></tr>
-        <tr><td>Akhiran</td><td>-kan, -i, -an</td><td>tuliskan, jauhi, makanan</td></tr>
-        <tr><td>Apitan</td><td>meN-...-kan, ber-...-an, ke-...-an, peN-...-an</td><td>membesarkan, berpandangan, kebersihan, pembelajaran</td></tr>
-        <tr><td>Sisipan</td><td>-el-, -er-, -em-, -in-</td><td>telunjuk, seruling, gemuruh, sinambung</td></tr>
-      </table>
-
-      <div class="wrong-right">
-        <div class="wrong"><span class="tag">SALAH</span>Dia <em>menyanyi</em> lagu itu <em>dengan</em> baik sekali dia.</div>
-        <div class="right"><span class="tag">BETUL</span>Dia <em>menyanyikan</em> lagu itu dengan baik sekali.</div>
-      </div>
-
-      <h3 class="sub" id="ayat">Jenis &amp; Ragam Ayat</h3>
-
-      <h4 class="subsub">Mengikut Bilangan Klausa</h4>
-      <ul>
-        <li><strong>Ayat Tunggal</strong> — satu subjek, satu predikat. <em>Contoh:</em> Aminah menyapu halaman.</li>
-        <li><strong>Ayat Majmuk Gabungan</strong> — dua ayat tunggal digabung kata hubung setara (dan, atau, tetapi). <em>Contoh:</em> Aminah menyapu halaman dan Ali membasuh kereta.</li>
-        <li><strong>Ayat Majmuk Pancangan</strong> — satu ayat kecil disisipkan dalam ayat induk menggunakan kata hubung pancangan (yang, kerana, walaupun, jika). <em>Contoh:</em> Saya suka buku yang dihadiahkan oleh guru itu.</li>
-        <li><strong>Ayat Majmuk Campuran</strong> — gabungan ayat gabungan dan pancangan dalam satu ayat.</li>
-      </ul>
-
-      <h4 class="subsub">Ragam Ayat</h4>
-      <div class="wrong-right">
-        <div class="right"><span class="tag">AKTIF</span>Ali memukul bola itu.</div>
-        <div class="right"><span class="tag">PASIF</span>Bola itu dipukul oleh Ali.</div>
-      </div>
-
-      <h4 class="subsub">Jenis Ayat Mengikut Ragam</h4>
-      <ul>
-        <li><strong>Ayat Penyata</strong> — menyatakan fakta. <em>Hujan turun dengan lebat.</em></li>
-        <li><strong>Ayat Tanya</strong> — menanya sesuatu. <em>Adakah kamu sudah makan?</em></li>
-        <li><strong>Ayat Perintah</strong> — arahan/larangan. <em>Tolong tutup pintu itu.</em></li>
-        <li><strong>Ayat Seruan</strong> — meluahkan perasaan. <em>Aduhai, sakitnya!</em></li>
-      </ul>
-
-      <h3 class="sub" id="kesalahan">Kesalahan Tatabahasa Lazim</h3>
-      <div class="wrong-right">
-        <div class="wrong"><span class="tag">SALAH</span>Saya telah pergi ke pasar semalam.</div>
-        <div class="right"><span class="tag">BETUL</span>Saya pergi ke pasar semalam. <br><small>(elak "telah" + kata kerja jika sudah ada penanda masa lampau)</small></div>
-      </div>
-      <div class="wrong-right">
-        <div class="wrong"><span class="tag">SALAH</span>Kesemua pelajar-pelajar itu hadir.</div>
-        <div class="right"><span class="tag">BETUL</span>Semua pelajar itu hadir. <br><small>(elak gandaan kata + "semua/setiap")</small></div>
-      </div>
-      <div class="wrong-right">
-        <div class="wrong"><span class="tag">SALAH</span>Dia lebih tinggi dari saya.</div>
-        <div class="right"><span class="tag">BETUL</span>Dia lebih tinggi daripada saya. <br><small>("daripada" untuk bandingan, "dari" untuk tempat/masa)</small></div>
-      </div>
-
-      <div class="personal-note" data-note-key="tatabahasa">
-        <div class="personal-note-label">
-          <span>NOTA TAMBAHAN SAYA</span>
-          <span class="personal-note-status">Disimpan</span>
-        </div>
-        <textarea placeholder="Taip nota, contoh soalan, atau peringatan sendiri di sini — akan tersimpan secara automatik di peranti ini."></textarea>
-      </div>
-    </section>
-
-    <!-- ================= PERIBAHASA ================= -->
-    <section class="topic" id="peribahasa">
-      <h2>Peribahasa</h2>
-      <p class="topic-intro">Peribahasa penting untuk Kertas 1 (padanan maksud) dan menaikkan mutu bahasa dalam karangan. Kuasai kategori dan hafal contoh yang kerap muncul.</p>
-
-      <table>
-        <tr><th>Kategori</th><th>Ciri</th><th>Contoh</th></tr>
-        <tr><td>Simpulan Bahasa</td><td>Frasa tetap 2 patah perkataan atau lebih, makna kiasan</td><td>ringan tulang, kaki bangku, panjang tangan</td></tr>
-        <tr><td>Perumpamaan</td><td>Mengandungi perbandingan, biasanya guna "bagai/seperti/umpama"</td><td>bagai aur dengan tebing, seperti anai-anai</td></tr>
-        <tr><td>Pepatah</td><td>Ajaran/nasihat orang tua-tua, ayat lengkap</td><td>Alah bisa, tegal biasa.</td></tr>
-        <tr><td>Bidalan</td><td>Sindiran atau teguran halus</td><td>Harapkan pagar, pagar makan padi.</td></tr>
-        <tr><td>Kata-kata Hikmat</td><td>Nasihat berunsur pengajaran hidup</td><td>Hidup ini umpama roda, kadang di atas, kadang di bawah.</td></tr>
-      </table>
-
-      <h3 class="sub" id="senarai-peribahasa">Senarai Peribahasa Popular SPM</h3>
-      <div class="peribahasa-grid">
-        <div class="peribahasa-card"><div class="p-text">Bagai aur dengan tebing</div><div class="p-meaning">Hubungan yang saling bantu-membantu.</div></div>
-        <div class="peribahasa-card"><div class="p-text">Bagai anjing dengan kucing</div><div class="p-meaning">Sentiasa bertengkar / tidak pernah sepakat.</div></div>
-        <div class="peribahasa-card"><div class="p-text">Ringan tulang</div><div class="p-meaning">Rajin membantu tanpa mengira penat.</div></div>
-        <div class="peribahasa-card"><div class="p-text">Berat tulang</div><div class="p-meaning">Malas bekerja.</div></div>
-        <div class="peribahasa-card"><div class="p-text">Kaki bangku</div><div class="p-meaning">Tidak mahir dalam sesuatu bidang/sukan.</div></div>
-        <div class="peribahasa-card"><div class="p-text">Panjang tangan</div><div class="p-meaning">Suka mencuri.</div></div>
-        <div class="peribahasa-card"><div class="p-text">Besar kepala</div><div class="p-meaning">Sombong / bongkak.</div></div>
-        <div class="peribahasa-card"><div class="p-text">Buah tangan</div><div class="p-meaning">Hadiah atau cenderahati.</div></div>
-        <div class="peribahasa-card"><div class="p-text">Hangat-hangat tahi ayam</div><div class="p-meaning">Bersemangat pada mulanya sahaja.</div></div>
-        <div class="peribahasa-card"><div class="p-text">Seperti katak di bawah tempurung</div><div class="p-meaning">Berpandangan sempit / kurang pengetahuan.</div></div>
-        <div class="peribahasa-card"><div class="p-text">Seperti aur dengan tebing</div><div class="p-meaning">Persahabatan yang erat dan saling memerlukan.</div></div>
-        <div class="peribahasa-card"><div class="p-text">Umpama pinang dibelah dua</div><div class="p-meaning">Sangat serupa / seiras.</div></div>
-        <div class="peribahasa-card"><div class="p-text">Sedikit-sedikit lama-lama jadi bukit</div><div class="p-meaning">Sesuatu yang kecil jika terkumpul lama-kelamaan menjadi banyak.</div></div>
-        <div class="peribahasa-card"><div class="p-text">Alah bisa, tegal biasa</div><div class="p-meaning">Sesuatu yang sukar menjadi mudah jika selalu dilakukan.</div></div>
-        <div class="peribahasa-card"><div class="p-text">Melentur buluh biarlah dari rebungnya</div><div class="p-meaning">Mendidik anak elok bermula sejak kecil.</div></div>
-        <div class="peribahasa-card"><div class="p-text">Harapkan pagar, pagar makan padi</div><div class="p-meaning">Orang yang diharap menjaga, sebaliknya mengkhianati.</div></div>
-        <div class="peribahasa-card"><div class="p-text">Sepandai-pandai tupai melompat, akhirnya jatuh ke tanah</div><div class="p-meaning">Sepandai-pandai orang menyembunyikan kejahatan, akhirnya terbongkar juga.</div></div>
-        <div class="peribahasa-card"><div class="p-text">Air dicincang tidak akan putus</div><div class="p-meaning">Perbalahan keluarga akhirnya akan berbaik semula.</div></div>
-        <div class="peribahasa-card"><div class="p-text">Bak kacang lupakan kulit</div><div class="p-meaning">Melupakan asal-usul / jasa orang lain.</div></div>
-        <div class="peribahasa-card"><div class="p-text">Enau dalam belukar, melepaskan pucuk masing-masing</div><div class="p-meaning">Setiap orang mementingkan diri sendiri.</div></div>
-      </div>
-      <div class="note"><strong>Tip hafalan:</strong> Kumpulkan peribahasa mengikut tema (kerajinan, kesabaran, muslihat, kerjasama) — lebih mudah diingat berbanding hafal secara rawak.</div>
-
-      <div class="personal-note" data-note-key="peribahasa">
-        <div class="personal-note-label">
-          <span>NOTA TAMBAHAN SAYA</span>
-          <span class="personal-note-status">Disimpan</span>
-        </div>
-        <textarea placeholder="Tambah peribahasa lain yang guru ajar, atau maksud yang senang awak ingat."></textarea>
-      </div>
-    </section>
-
-    <!-- ================= KARANGAN ================= -->
-    <section class="topic" id="karangan">
-      <h2>Karangan</h2>
-      <p class="topic-intro">Karangan dalam SPM terbahagi kepada dua kategori besar: <strong>Karangan Berformat</strong> (surat, laporan, syarahan, dll.) dan <strong>Karangan Tidak Berformat</strong> (naratif, deskriptif, perbincangan). Format yang tepat menyumbang markah "kesesuaian" yang penting.</p>
+    <!-- ============ KERTAS 1: KARANGAN A ============ -->
+    <section class="topic" id="karangan-a">
+      <h2>Kertas 1 — Karangan A (Berformat)</h2>
+      <p class="topic-intro">Karangan berformat menguji kebolehan mengikut format tertentu — surat, laporan, syarahan, rencana atau dialog. Format yang tepat menyumbang markah "kesesuaian" yang penting.</p>
 
       <h3 class="sub" id="surat-rasmi">Surat Kiriman Rasmi</h3>
-      <p>Digunakan untuk memohon, mengadu, mencadangkan sesuatu kepada pihak berkuasa/organisasi.</p>
+      <p>Digunakan untuk memohon, mengadu, atau mencadangkan sesuatu kepada pihak berkuasa/organisasi.</p>
       <ol class="format-steps">
         <li>Alamat pengirim (penjuru atas kiri)</li>
         <li>Tarikh (di bawah alamat pengirim)</li>
@@ -770,7 +408,7 @@
       <ol class="format-steps">
         <li>Tajuk laporan (cth: Laporan Program Gotong-Royong Perdana)</li>
         <li>Pendahuluan — nyatakan tujuan, tarikh, masa, tempat, penganjur</li>
-        <li>Isi — susun mengikut kronologi (pagi → tengah hari → petang) atau mengikut aktiviti</li>
+        <li>Isi — susun mengikut kronologi atau mengikut aktiviti</li>
         <li>Penutup — rumusan dan cadangan / harapan untuk masa depan</li>
         <li>Disediakan oleh: (nama + jawatan)</li>
       </ol>
@@ -786,12 +424,22 @@
       <div class="note">Beza syarahan &amp; ceramah: syarahan biasanya bersifat pertandingan/formal dengan sapaan hakim; ceramah lebih kepada penyampaian ilmu/nasihat kepada orang ramai.</div>
 
       <h3 class="sub" id="rencana">Rencana &amp; Dialog</h3>
-      <p><strong>Rencana</strong> — penulisan pandangan/analisis tentang sesuatu isu, biasa untuk majalah/akhbar. Ada tajuk menarik, pendahuluan, isi (fakta + pandangan penulis), dan penutup dengan cadangan.</p>
-      <p><strong>Dialog</strong> — perbualan antara dua watak atau lebih. Setiap giliran bercakap ditanda dengan nama watak diikuti tanda titik bercantum ( : ) dan tidak perlu tanda petik.</p>
+      <p><strong>Rencana</strong> — penulisan pandangan/analisis tentang sesuatu isu. Ada tajuk menarik, pendahuluan, isi (fakta + pandangan penulis), dan penutup dengan cadangan.</p>
+      <p><strong>Dialog</strong> — perbualan antara dua watak atau lebih. Setiap giliran bercakap ditanda dengan nama watak diikuti tanda titik bercantum ( : ) tanpa tanda petik.</p>
       <div class="example"><strong>Contoh:</strong> Aiman: Kau dah siap buat kerja projek Sains tu?<br>Faris: Belum lagi, aku nak siapkan hujung minggu ini.</div>
 
-      <h3 class="sub" id="tidak-berformat">Karangan Tidak Berformat</h3>
-      <p>Meliputi karangan naratif (bercerita), deskriptif (menggambarkan), dan perbincangan/pendapat (isu semasa).</p>
+      <div class="personal-note" data-note-key="karangan-a">
+        <div class="personal-note-label"><span>Nota Tambahan Saya</span><span class="personal-note-status">Disimpan</span></div>
+        <textarea placeholder="Simpan contoh ayat atau format tambahan dari guru untuk Karangan A."></textarea>
+      </div>
+    </section>
+
+    <!-- ============ KERTAS 1: KARANGAN B ============ -->
+    <section class="topic" id="karangan-b-section">
+      <h2>Kertas 1 — Karangan B (Tidak Berformat)</h2>
+      <p class="topic-intro">Meliputi karangan naratif (bercerita), deskriptif (menggambarkan), dan perbincangan/pendapat (isu semasa). Tiada format tetap, tetapi struktur pendahuluan-isi-penutup tetap perlu jelas.</p>
+
+      <h3 class="sub" id="karangan-b">Struktur &amp; Contoh</h3>
       <div class="card">
         <h4 class="subsub" style="margin-top:0;">Struktur Umum</h4>
         <ul>
@@ -801,66 +449,204 @@
         </ul>
       </div>
       <div class="wrong-right">
-        <div class="wrong"><span class="tag">PENDAHULUAN LEMAH</span>Pada zaman sekarang, banyak remaja yang menggunakan telefon pintar.</div>
-        <div class="right"><span class="tag">PENDAHULUAN KUAT</span>Sejak subuh hingga ke lena malam, telefon pintar seakan-akan menjadi organ tambahan dalam kehidupan remaja masa kini.</div>
+        <div class="wrong"><span class="tag">Pendahuluan Lemah</span>Pada zaman sekarang, banyak remaja yang menggunakan telefon pintar.</div>
+        <div class="right"><span class="tag">Pendahuluan Kuat</span>Sejak subuh hingga ke lena malam, telefon pintar seakan-akan menjadi organ tambahan dalam kehidupan remaja masa kini.</div>
       </div>
 
-      <h3 class="sub" id="tips-karangan">Tip Markah Tinggi</h3>
+      <h3 class="sub" id="tips-karangan">Tip Markah Tinggi (Karangan A &amp; B)</h3>
       <ul>
         <li>Gunakan <strong>penanda wacana</strong> pelbagai: tambahan pula, sehubungan dengan itu, walau bagaimanapun, kesimpulannya.</li>
         <li>Selitkan <strong>1–2 peribahasa</strong> yang sesuai konteks — jangan paksa jika tidak sesuai.</li>
         <li>Elakkan bahasa pasar/singkatan SMS (cth: "xde", "sbb", "je").</li>
-        <li>Semak <strong>ejaan kata pinjaman</strong> yang kerap silap: aktiviti (bukan "aktifiti"), teknologi, kualiti, produktiviti.</li>
-        <li>Panjang ideal karangan berformat: 200–250 patah perkataan; tidak berformat: 350 patah perkataan ke atas.</li>
+        <li>Semak <strong>ejaan kata pinjaman</strong> yang kerap silap: aktiviti, teknologi, kualiti, produktiviti.</li>
+        <li>Panjang ideal: karangan berformat 200–250 patah perkataan; tidak berformat 350 patah perkataan ke atas.</li>
       </ul>
 
-      <div class="personal-note" data-note-key="karangan">
-        <div class="personal-note-label">
-          <span>NOTA TAMBAHAN SAYA</span>
-          <span class="personal-note-status">Disimpan</span>
-        </div>
-        <textarea placeholder="Simpan contoh ayat pendahuluan/penutup yang awak suka, atau format tambahan dari guru."></textarea>
+      <div class="personal-note" data-note-key="karangan-b">
+        <div class="personal-note-label"><span>Nota Tambahan Saya</span><span class="personal-note-status">Disimpan</span></div>
+        <textarea placeholder="Simpan contoh ayat pendahuluan/penutup yang awak suka untuk Karangan B."></textarea>
       </div>
     </section>
 
-    <!-- ================= KOMSAS ================= -->
-    <section class="topic" id="komsas">
-      <h2>Komsas</h2>
-      <p class="topic-intro">Komponen Sastera (Komsas) menguji kefahaman terhadap novel, cerpen, puisi (sajak/puisi tradisional) dan drama yang ditetapkan oleh KPM/DBP. Oleh sebab teks boleh berbeza mengikut zon dan tahun peperiksaan, fokus pada <strong>kemahiran menganalisis</strong> di bawah — kemahiran ini terpakai untuk teks apa sahaja yang diajar oleh guru anda.</p>
+    <!-- ============ KERTAS 2: SISTEM BAHASA ============ -->
+    <section class="topic" id="sistem-bahasa">
+      <h2>Kertas 2 — Bahagian A: Sistem Bahasa</h2>
+      <p class="topic-intro">Menguji tatabahasa secara langsung: morfologi (kata &amp; imbuhan), sintaksis (ayat), penyuntingan (kesalahan bahasa), peralihan BM Klasik ke Standard, dan peribahasa.</p>
 
-      <div class="note"><strong>Nota penting:</strong> Senarai teks Komsas (novel, antologi, drama) ditetapkan mengikut edisi/zon dan boleh dikemas kini oleh DBP dari semasa ke semasa. Sila rujuk guru BM atau buku teks rasmi untuk memastikan tajuk teks yang tepat untuk sesi persekolahan anda.</div>
+      <h3 class="sub" id="morfologi">Morfologi</h3>
+      <h4 class="subsub">Golongan Kata</h4>
+      <ul>
+        <li><strong>Kata Nama</strong> — Am (guru, bandar), Khas (Melaka, Tun Mahathir), Ganti Nama (saya, mereka, ini, situ)</li>
+        <li><strong>Kata Kerja</strong> — Transitif (perlukan objek: Ali <em>membaca</em> buku), Tak Transitif (Adik <em>menangis</em>)</li>
+        <li><strong>Kata Adjektif</strong> — cantik, tinggi, pantas; boleh digandakan (cantik-cantik)</li>
+        <li><strong>Kata Tugas</strong> — Kata Hubung (dan, kerana), Kata Seru (Wah!), Kata Perintah (sila, jangan), Kata Sendi Nama (di, ke, dari)</li>
+      </ul>
+      <h4 class="subsub">Imbuhan</h4>
+      <div class="table-scroll">
+        <table>
+          <tr><th>Jenis</th><th>Contoh Imbuhan</th><th>Contoh Perkataan</th></tr>
+          <tr><td>Awalan</td><td>meN-, ber-, di-, ter-, se-, peN-, ke-</td><td>membaca, bermain, dimakan, terjatuh, sebuah</td></tr>
+          <tr><td>Akhiran</td><td>-kan, -i, -an</td><td>tuliskan, jauhi, makanan</td></tr>
+          <tr><td>Apitan</td><td>meN-...-kan, ber-...-an, ke-...-an, peN-...-an</td><td>membesarkan, berpandangan, kebersihan, pembelajaran</td></tr>
+          <tr><td>Sisipan</td><td>-el-, -er-, -em-, -in-</td><td>telunjuk, seruling, gemuruh, sinambung</td></tr>
+        </table>
+      </div>
+      <div class="wrong-right">
+        <div class="wrong"><span class="tag">Salah</span>Dia menyanyi lagu itu dengan baik sekali dia.</div>
+        <div class="right"><span class="tag">Betul</span>Dia menyanyikan lagu itu dengan baik sekali.</div>
+      </div>
 
-      <h3 class="sub" id="unsur-komsas">Unsur-Unsur Utama yang Perlu Dikuasai</h3>
-      <table>
-        <tr><th>Unsur</th><th>Perkara Perlu Dikenal Pasti</th></tr>
-        <tr><td>Tema &amp; Persoalan</td><td>Isu utama (tema) dan isu-isu sampingan (persoalan) yang dibangkitkan dalam teks</td></tr>
-        <tr><td>Watak &amp; Perwatakan</td><td>Watak utama/sampingan dan sifat/personaliti setiap watak, disokong bukti dari teks</td></tr>
-        <tr><td>Latar</td><td>Latar tempat, latar masa, latar masyarakat yang digambarkan</td></tr>
-        <tr><td>Plot</td><td>Susunan peristiwa: permulaan, perkembangan, klimaks, peleraian; teknik plot (imbas kembali, dialog, monolog)</td></tr>
-        <tr><td>Gaya Bahasa</td><td>Penggunaan bahasa kiasan, peribahasa, dialek, ironi dalam teks</td></tr>
-        <tr><td>Nilai</td><td>Nilai murni yang terkandung (cth: kasih sayang, ketabahan, kerjasama)</td></tr>
-        <tr><td>Pengajaran</td><td>Iktibar yang boleh diambil pembaca, biasa ditulis dalam ayat "Kita hendaklah..."</td></tr>
-      </table>
+      <h3 class="sub" id="sintaksis">Sintaksis</h3>
+      <h4 class="subsub">Mengikut Bilangan Klausa</h4>
+      <ul>
+        <li><strong>Ayat Tunggal</strong> — satu subjek, satu predikat. Cth: Aminah menyapu halaman.</li>
+        <li><strong>Ayat Majmuk Gabungan</strong> — digabung kata hubung setara (dan, atau, tetapi).</li>
+        <li><strong>Ayat Majmuk Pancangan</strong> — guna kata hubung pancangan (yang, kerana, walaupun, jika).</li>
+        <li><strong>Ayat Majmuk Campuran</strong> — gabungan ayat gabungan &amp; pancangan.</li>
+      </ul>
+      <h4 class="subsub">Ragam Ayat</h4>
+      <div class="wrong-right">
+        <div class="right"><span class="tag">Aktif</span>Ali memukul bola itu.</div>
+        <div class="right"><span class="tag">Pasif</span>Bola itu dipukul oleh Ali.</div>
+      </div>
+      <h4 class="subsub">Jenis Ayat</h4>
+      <ul>
+        <li><strong>Penyata</strong> — Hujan turun dengan lebat.</li>
+        <li><strong>Tanya</strong> — Adakah kamu sudah makan?</li>
+        <li><strong>Perintah</strong> — Tolong tutup pintu itu.</li>
+        <li><strong>Seruan</strong> — Aduhai, sakitnya!</li>
+      </ul>
 
-      <h3 class="sub" id="teknik-jawab">Teknik Menjawab Soalan Komsas</h3>
+      <h3 class="sub" id="penyuntingan">Penyuntingan</h3>
+      <p>Kemahiran mengesan dan membetulkan kesalahan tatabahasa dalam ayat/petikan.</p>
+      <div class="wrong-right">
+        <div class="wrong"><span class="tag">Salah</span>Saya telah pergi ke pasar semalam.</div>
+        <div class="right"><span class="tag">Betul</span>Saya pergi ke pasar semalam. <br><small>(elak "telah" jika sudah ada penanda masa lampau)</small></div>
+      </div>
+      <div class="wrong-right">
+        <div class="wrong"><span class="tag">Salah</span>Kesemua pelajar-pelajar itu hadir.</div>
+        <div class="right"><span class="tag">Betul</span>Semua pelajar itu hadir. <br><small>(elak gandaan kata + "semua/setiap")</small></div>
+      </div>
+      <div class="wrong-right">
+        <div class="wrong"><span class="tag">Salah</span>Dia lebih tinggi dari saya.</div>
+        <div class="right"><span class="tag">Betul</span>Dia lebih tinggi daripada saya. <br><small>("daripada" untuk bandingan, "dari" untuk tempat/masa)</small></div>
+      </div>
+      <div class="note"><strong>Tip:</strong> Baca ayat perlahan-lahan, kenal pasti golongan kata setiap perkataan, dan semak persetujuan subjek-predikat serta penggunaan kata sendi.</div>
+
+      <h3 class="sub" id="bm-klasik">BM Klasik → BM Standard</h3>
+      <p>Menguji kebolehan mengenal pasti dan menukar perkataan/struktur Bahasa Melayu Klasik kepada bentuk Bahasa Melayu Standard moden.</p>
+      <div class="table-scroll">
+        <table>
+          <tr><th>Perkataan/Struktur Klasik</th><th>Persamaan BM Standard</th></tr>
+          <tr><td>Beta</td><td>Saya (raja merujuk diri sendiri)</td></tr>
+          <tr><td>Patik</td><td>Saya (rakyat merujuk diri kepada raja)</td></tr>
+          <tr><td>Hamba</td><td>Saya / Aku</td></tr>
+          <tr><td>Nescaya</td><td>Sudah tentu / Pasti</td></tr>
+          <tr><td>Tatkala</td><td>Ketika / Semasa</td></tr>
+          <tr><td>Bahawasanya</td><td>Sesungguhnya / Bahawa</td></tr>
+          <tr><td>Adapun</td><td>Mengenai / Berkenaan</td></tr>
+          <tr><td>Maka</td><td>Lalu / Kemudian</td></tr>
+          <tr><td>Hatta</td><td>Selepas itu / Kemudian</td></tr>
+          <tr><td>Titah</td><td>Kata / Perintah (raja)</td></tr>
+        </table>
+      </div>
+      <div class="note"><strong>Tip:</strong> Ayat klasik sering bermula dengan kata pembuka seperti "Maka...", "Hatta...", "Adapun..." — dalam BM standard, kata ini biasanya digugurkan atau ditukar kepada penanda wacana moden tanpa mengubah maksud asal ayat.</div>
+
+      <div class="personal-note" data-note-key="sistem-bahasa">
+        <div class="personal-note-label"><span>Nota Tambahan Saya</span><span class="personal-note-status">Disimpan</span></div>
+        <textarea placeholder="Tambah nota untuk Morfologi, Sintaksis, Penyuntingan atau BM Klasik di sini."></textarea>
+      </div>
+
+      <h3 class="sub" id="peribahasa">Peribahasa</h3>
+      <div class="table-scroll">
+        <table>
+          <tr><th>Kategori</th><th>Ciri</th><th>Contoh</th></tr>
+          <tr><td>Simpulan Bahasa</td><td>Frasa tetap, makna kiasan</td><td>ringan tulang, kaki bangku, panjang tangan</td></tr>
+          <tr><td>Perumpamaan</td><td>Mengandungi perbandingan (bagai/seperti/umpama)</td><td>bagai aur dengan tebing</td></tr>
+          <tr><td>Pepatah</td><td>Ajaran orang tua-tua, ayat lengkap</td><td>Alah bisa, tegal biasa.</td></tr>
+          <tr><td>Bidalan</td><td>Sindiran/teguran halus</td><td>Harapkan pagar, pagar makan padi.</td></tr>
+          <tr><td>Kata-kata Hikmat</td><td>Nasihat pengajaran hidup</td><td>Hidup ini umpama roda, kadang di atas, kadang di bawah.</td></tr>
+        </table>
+      </div>
+
+      <h4 class="subsub" id="senarai-peribahasa">Senarai Peribahasa Popular SPM</h4>
+      <div class="peribahasa-grid">
+        <div class="peribahasa-card"><div class="p-text">Bagai aur dengan tebing</div><div class="p-meaning">Hubungan yang saling bantu-membantu.</div></div>
+        <div class="peribahasa-card"><div class="p-text">Bagai anjing dengan kucing</div><div class="p-meaning">Sentiasa bertengkar / tidak pernah sepakat.</div></div>
+        <div class="peribahasa-card"><div class="p-text">Ringan tulang</div><div class="p-meaning">Rajin membantu tanpa mengira penat.</div></div>
+        <div class="peribahasa-card"><div class="p-text">Berat tulang</div><div class="p-meaning">Malas bekerja.</div></div>
+        <div class="peribahasa-card"><div class="p-text">Kaki bangku</div><div class="p-meaning">Tidak mahir dalam sesuatu bidang/sukan.</div></div>
+        <div class="peribahasa-card"><div class="p-text">Panjang tangan</div><div class="p-meaning">Suka mencuri.</div></div>
+        <div class="peribahasa-card"><div class="p-text">Besar kepala</div><div class="p-meaning">Sombong / bongkak.</div></div>
+        <div class="peribahasa-card"><div class="p-text">Buah tangan</div><div class="p-meaning">Hadiah atau cenderahati.</div></div>
+        <div class="peribahasa-card"><div class="p-text">Hangat-hangat tahi ayam</div><div class="p-meaning">Bersemangat pada mulanya sahaja.</div></div>
+        <div class="peribahasa-card"><div class="p-text">Seperti katak di bawah tempurung</div><div class="p-meaning">Berpandangan sempit / kurang pengetahuan.</div></div>
+        <div class="peribahasa-card"><div class="p-text">Umpama pinang dibelah dua</div><div class="p-meaning">Sangat serupa / seiras.</div></div>
+        <div class="peribahasa-card"><div class="p-text">Sedikit-sedikit lama-lama jadi bukit</div><div class="p-meaning">Sesuatu yang kecil jika terkumpul lama-kelamaan menjadi banyak.</div></div>
+        <div class="peribahasa-card"><div class="p-text">Alah bisa, tegal biasa</div><div class="p-meaning">Sesuatu yang sukar menjadi mudah jika selalu dilakukan.</div></div>
+        <div class="peribahasa-card"><div class="p-text">Melentur buluh biarlah dari rebungnya</div><div class="p-meaning">Mendidik anak elok bermula sejak kecil.</div></div>
+        <div class="peribahasa-card"><div class="p-text">Harapkan pagar, pagar makan padi</div><div class="p-meaning">Orang yang diharap menjaga, sebaliknya mengkhianati.</div></div>
+        <div class="peribahasa-card"><div class="p-text">Sepandai-pandai tupai melompat, akhirnya jatuh ke tanah</div><div class="p-meaning">Sepandai-pandai orang menyembunyikan kejahatan, akhirnya terbongkar juga.</div></div>
+        <div class="peribahasa-card"><div class="p-text">Air dicincang tidak akan putus</div><div class="p-meaning">Perbalahan keluarga akhirnya akan berbaik semula.</div></div>
+        <div class="peribahasa-card"><div class="p-text">Bak kacang lupakan kulit</div><div class="p-meaning">Melupakan asal-usul / jasa orang lain.</div></div>
+        <div class="peribahasa-card"><div class="p-text">Enau dalam belukar, melepaskan pucuk masing-masing</div><div class="p-meaning">Setiap orang mementingkan diri sendiri.</div></div>
+      </div>
+      <div class="note"><strong>Tip hafalan:</strong> Kumpulkan peribahasa mengikut tema (kerajinan, kesabaran, muslihat, kerjasama) — lebih mudah diingat berbanding hafal secara rawak.</div>
+    </section>
+
+    <!-- ============ KERTAS 2: PEMAHAMAN ============ -->
+    <section class="topic" id="pemahaman">
+      <h2>Kertas 2 — Bahagian A: Pemahaman</h2>
+      <p class="topic-intro">Meliputi pemahaman petikan umum, petikan sastera, dan pemahaman novel berserta peristiwa dalam novel.</p>
+
+      <h3 class="sub" id="petikan-umum">Petikan Umum</h3>
+      <ul>
+        <li>Baca soalan dahulu sebelum petikan supaya tahu apa yang perlu dicari semasa membaca.</li>
+        <li>Garis/tanda kata kunci dalam soalan untuk kekalkan fokus.</li>
+        <li>Soalan "nyatakan" — jawapan biasanya terus ada dalam petikan (literal).</li>
+        <li>Soalan makna perkataan — guna konteks ayat sekeliling, bukan hafalan kamus semata-mata.</li>
+        <li>Elak menyalin ayat penuh dari petikan untuk soalan yang minta huraian sendiri — guna ayat sendiri.</li>
+      </ul>
+
+      <h3 class="sub" id="petikan-sastera">Petikan Sastera</h3>
+      <p>Petikan berbentuk cerpen/prosa/puisi pendek yang menguji unsur sastera di samping kefahaman biasa.</p>
+      <ul>
+        <li><strong>Tema &amp; Persoalan</strong> — isu utama dan isu sampingan dalam petikan.</li>
+        <li><strong>Watak &amp; Perwatakan</strong> — sifat watak, disokong bukti dari petikan.</li>
+        <li><strong>Gaya Bahasa</strong> — bahasa kiasan, personifikasi, perbandingan, dsb.</li>
+        <li><strong>Nilai &amp; Pengajaran</strong> — nilai murni dan iktibar yang boleh diambil.</li>
+      </ul>
+      <div class="note">Teknik jawapan sama seperti Komsas: <strong>Pernyataan → Huraian/Bukti → Kaitan</strong> dengan soalan.</div>
+
+      <h3 class="sub" id="pemahaman-novel">Pemahaman Novel &amp; Peristiwa Novel</h3>
+      <p>Menguji kefahaman terhadap keseluruhan novel — tema, watak, latar, plot, gaya bahasa, nilai dan pengajaran — serta kebolehan mengaitkan arahan soalan dengan peristiwa tertentu dalam novel.</p>
+      <div class="note"><strong>Nota penting:</strong> Judul novel yang ditetapkan boleh berbeza mengikut zon/tahun peperiksaan. Sila rujuk guru BM untuk memastikan tajuk novel yang tepat untuk sesi persekolahan anda.</div>
+
+      <h4 class="subsub">Unsur-Unsur Utama yang Perlu Dikuasai</h4>
+      <div class="table-scroll">
+        <table>
+          <tr><th>Unsur</th><th>Perkara Perlu Dikenal Pasti</th></tr>
+          <tr><td>Tema &amp; Persoalan</td><td>Isu utama (tema) dan isu sampingan (persoalan) dalam novel</td></tr>
+          <tr><td>Watak &amp; Perwatakan</td><td>Watak utama/sampingan dan sifat setiap watak, disokong bukti dari teks</td></tr>
+          <tr><td>Latar</td><td>Latar tempat, masa, dan masyarakat yang digambarkan</td></tr>
+          <tr><td>Plot</td><td>Susunan peristiwa dan teknik plot (imbas kembali, dialog, monolog)</td></tr>
+          <tr><td>Gaya Bahasa</td><td>Bahasa kiasan, peribahasa, dialek, ironi dalam teks</td></tr>
+          <tr><td>Nilai &amp; Pengajaran</td><td>Nilai murni dan iktibar yang boleh diambil pembaca</td></tr>
+        </table>
+      </div>
+
+      <h4 class="subsub">Teknik Menjawab Soalan Peristiwa Novel</h4>
       <div class="card">
-        <h4 class="subsub" style="margin-top:0;">Format Jawapan Berkesan</h4>
         <ol class="format-steps">
           <li><strong>Pernyataan</strong> — jawab terus soalan dalam satu ayat pendahuluan</li>
-          <li><strong>Huraian/Bukti</strong> — sokong dengan peristiwa/dialog/perincian dari teks</li>
-          <li><strong>Kaitan</strong> — hubungkan jawapan dengan soalan atau nilai/pengajaran jika diminta</li>
+          <li><strong>Huraian/Bukti</strong> — sokong dengan peristiwa/dialog/perincian dari novel</li>
+          <li><strong>Kaitan</strong> — hubungkan jawapan dengan arahan soalan (nilai/pengajaran/sebab/kesan)</li>
         </ol>
       </div>
       <div class="example"><strong>Contoh soalan:</strong> Nyatakan satu nilai murni yang terdapat dalam petikan novel dan huraikan.<br><strong>Contoh jawapan:</strong> Nilai murni yang terdapat dalam petikan ialah semangat kerjasama. Hal ini digambarkan apabila watak utama bergotong-royong dengan penduduk kampung untuk membersihkan surau sebelum sambutan hari raya. Semangat ini menunjukkan bahawa kerjasama dapat mengeratkan hubungan sesama anggota masyarakat.</div>
 
-      <ul>
-        <li>Baca soalan dengan teliti — kenal pasti kata tanya (nyatakan, jelaskan, bandingkan, huraikan) kerana setiap satu memerlukan gaya jawapan berbeza.</li>
-        <li>Untuk soalan novel/cerpen keseluruhan, buat <strong>peta watak</strong> dan <strong>garis masa plot</strong> semasa mengulang kaji.</li>
-        <li>Untuk puisi, kenal pasti <strong>maksud rangkap demi rangkap</strong> dahulu sebelum menghafal — lebih mudah diingat berbanding hafalan literal.</li>
-      </ul>
-
-      <h3 class="sub" id="analisis-novel-ppc">Analisis Soalan Novel — Percubaan SPM Negeri-Negeri 2026 (Soalan 8(ii))</h3>
-      <p class="novel-source-note">Sumber: @Cikgu Zul Oh BahasaKu — Analisis Kertas 2 Soalan Novel (8)(ii), Soalan Percubaan SPM Negeri-Negeri 2026, meliputi novel <em>Disebalik Dinara</em> dan <em>Silir Daksina</em>.</p>
+      <h4 class="subsub">Analisis Soalan Novel — Percubaan SPM Negeri-Negeri 2026 (Soalan 8(ii))</h4>
+      <p class="novel-source-note">Sumber: @Cikgu Zul Oh BahasaKu — Analisis Kertas 2 Soalan Novel (8)(ii), meliputi novel <em>Disebalik Dinara</em> dan <em>Silir Daksina</em>.</p>
 
       <div class="novel-analysis-card">
         <div class="novel-analysis-head"><span class="novel-bil">Bil. 1</span><h4>Selangor (Set 1)</h4></div>
@@ -1114,12 +900,73 @@
         </div>
       </div>
 
-      <div class="personal-note" data-note-key="komsas">
-        <div class="personal-note-label">
-          <span>NOTA TAMBAHAN SAYA</span>
-          <span class="personal-note-status">Disimpan</span>
-        </div>
-        <textarea placeholder="Taip nota khusus untuk novel/antologi/drama yang awak belajar di sekolah — watak, tema, contoh jawapan, dll."></textarea>
+      <div class="personal-note" data-note-key="pemahaman">
+        <div class="personal-note-label"><span>Nota Tambahan Saya</span><span class="personal-note-status">Disimpan</span></div>
+        <textarea placeholder="Taip nota khusus untuk novel/petikan yang awak belajar di sekolah — watak, tema, contoh jawapan, dll."></textarea>
+      </div>
+    </section>
+
+    <!-- ============ KERTAS 2: RUMUSAN ============ -->
+    <section class="topic" id="rumusan-section">
+      <h2>Kertas 2 — Rumusan</h2>
+      <p class="topic-intro">Menguji kebolehan meringkaskan sesuatu petikan panjang kepada isi-isi penting menggunakan ayat sendiri, dalam had patah perkataan yang ditetapkan.</p>
+
+      <h3 class="sub" id="rumusan">Format &amp; Teknik Rumusan</h3>
+      <div class="card">
+        <h4 class="subsub" style="margin-top:0;">Struktur Rumusan</h4>
+        <ol class="format-steps">
+          <li><strong>Pendahuluan</strong> — satu ayat sahaja, nyatakan intipati keseluruhan petikan (jangan salin ayat pertama petikan)</li>
+          <li><strong>Isi Tersurat</strong> — isi yang dinyatakan secara jelas/terus dalam petikan</li>
+          <li><strong>Isi Tersirat</strong> — isi yang perlu difikirkan sendiri berdasarkan gambaran/situasi dalam petikan, tidak dinyatakan terus</li>
+          <li><strong>Penutup/Kesimpulan</strong> — pandangan, cadangan atau harapan ringkas</li>
+        </ol>
+      </div>
+      <ul>
+        <li>Ikuti had patah perkataan yang ditetapkan dalam soalan (biasanya sekitar 120 patah perkataan, tidak termasuk pendahuluan).</li>
+        <li>Gunakan <strong>ayat/perkataan sendiri (parafrasa)</strong> — jangan salin terus ayat dari petikan.</li>
+        <li>Kira patah perkataan pada penghujung penulisan supaya tidak melebihi had.</li>
+        <li>Susun isi mengikut turutan yang logik, bukan rawak.</li>
+      </ul>
+      <div class="wrong-right">
+        <div class="wrong"><span class="tag">Isi Tersurat</span>Kerajaan telah membina 500 buah rumah mampu milik di kawasan itu.</div>
+        <div class="right"><span class="tag">Isi Tersirat</span>Kerajaan prihatin terhadap keperluan perumahan golongan berpendapatan rendah. <br><small>(disimpulkan sendiri, bukan dinyatakan terus dalam petikan)</small></div>
+      </div>
+
+      <div class="personal-note" data-note-key="rumusan">
+        <div class="personal-note-label"><span>Nota Tambahan Saya</span><span class="personal-note-status">Disimpan</span></div>
+        <textarea placeholder="Simpan contoh isi tersirat/tersurat atau nota tambahan untuk Rumusan."></textarea>
+      </div>
+    </section>
+
+    <!-- ============ KERTAS 3 ============ -->
+    <section class="topic" id="kertas-3">
+      <h2>Kertas 3 — Lisan</h2>
+      <p class="topic-intro">Menilai kemahiran bertutur dan mendengar secara terus, berbeza daripada Kertas 1 dan 2 yang berbentuk tulisan.</p>
+
+      <h3 class="sub" id="ujian-bertutur">Ujian Bertutur (Individu &amp; Kumpulan)</h3>
+      <h4 class="subsub">Individu</h4>
+      <p>Pelajar diberi topik/rangsangan (gambar/soalan) dan bercakap secara bersendirian selama beberapa minit. Dinilai dari segi kefasihan, struktur ayat, kosa kata, dan keyakinan.</p>
+      <h4 class="subsub">Kumpulan</h4>
+      <p>Beberapa pelajar berbincang topik yang sama secara berkumpulan. Dinilai dari segi sumbangan idea, interaksi dengan ahli kumpulan lain, dan kualiti bahasa yang digunakan.</p>
+      <ul>
+        <li>Sediakan struktur pendahuluan-isi-penutup ringkas walaupun bertutur secara spontan.</li>
+        <li>Gunakan penanda wacana lisan: "pada pendapat saya", "tambahan pula", "sebagai kesimpulan".</li>
+        <li>Elak diam terlalu lama — teruskan bercakap walaupun idea kurang lengkap.</li>
+        <li>Untuk ujian kumpulan, dengar dan respons kepada pandangan ahli lain, jangan hanya tunggu giliran sendiri.</li>
+      </ul>
+
+      <h3 class="sub" id="ujian-mendengar">Ujian Mendengar</h3>
+      <p>Pelajar mendengar rakaman/petikan yang dibacakan, kemudian menjawab soalan pemahaman berdasarkan apa yang didengar.</p>
+      <ul>
+        <li>Baca soalan dahulu sebelum rakaman dimainkan (jika ada masa diberikan).</li>
+        <li>Catat kata kunci semasa mendengar — jangan cuba tulis ayat penuh.</li>
+        <li>Fokus pada nombor, nama, dan fakta penting yang disebut.</li>
+        <li>Jangan panik jika terlepas satu bahagian — teruskan dengar bahagian seterusnya.</li>
+      </ul>
+
+      <div class="personal-note" data-note-key="kertas-3">
+        <div class="personal-note-label"><span>Nota Tambahan Saya</span><span class="personal-note-status">Disimpan</span></div>
+        <textarea placeholder="Simpan tip atau pengalaman peribadi untuk Ujian Bertutur/Mendengar."></textarea>
       </div>
     </section>
 
@@ -1128,45 +975,69 @@
     </footer>
   </main>
 </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- TAB 2: NOTA BM MENENGAH RENDAH                                -->
+<!-- ============================================================ -->
+<div class="top-tab-panel" id="panel-rendah">
+  <div class="layout">
+    <main class="no-sidebar">
+      <header class="hero">
+        <div class="hero-eyebrow">Nota Rujukan · Bahasa Melayu Menengah Rendah</div>
+        <h1>Nota BM Menengah Rendah</h1>
+        <p>Bahagian ini untuk nota Tingkatan 1 hingga 3 — akan diisi mengikut keperluan.</p>
+      </header>
+
+      <div class="empty-state">
+        <div class="icon">📗</div>
+        <h2>Kandungan Akan Ditambah</h2>
+        <p>Hantar terus topik atau nota yang awak nak masukkan untuk Menengah Rendah, dan ia akan disusun di sini ikut tingkatan/topik.</p>
+      </div>
+
+      <div class="personal-note" data-note-key="menengah-rendah">
+        <div class="personal-note-label"><span>Nota Tambahan Saya</span><span class="personal-note-status">Disimpan</span></div>
+        <textarea placeholder="Taip nota Menengah Rendah di sini buat sementara waktu."></textarea>
+      </div>
+    </main>
+  </div>
+</div>
 
 <script>
+  // ---- Top-level tab switching ----
+  document.querySelectorAll('.top-tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.top-tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.top-tab-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(btn.getAttribute('data-target')).classList.add('active');
+    });
+  });
+
+  // ---- Mobile sidebar ----
   const menuBtn = document.getElementById('menuBtn');
   const sidebar = document.getElementById('sidebar');
   const scrim = document.getElementById('scrim');
   const themeToggle = document.getElementById('themeToggle');
 
-  function openMenu() {
-    sidebar.classList.add('open');
-    scrim.classList.add('show');
-  }
-  function closeMenu() {
-    sidebar.classList.remove('open');
-    scrim.classList.remove('show');
-  }
+  function openMenu() { sidebar.classList.add('open'); scrim.classList.add('show'); }
+  function closeMenu() { sidebar.classList.remove('open'); scrim.classList.remove('show'); }
   menuBtn && menuBtn.addEventListener('click', openMenu);
   scrim && scrim.addEventListener('click', closeMenu);
-  sidebar.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+  sidebar && sidebar.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
 
-  themeToggle.addEventListener('click', () => {
+  themeToggle && themeToggle.addEventListener('click', () => {
     const root = document.documentElement;
     const current = root.getAttribute('data-theme');
-    if (current === 'dark') {
-      root.setAttribute('data-theme', 'light');
-    } else if (current === 'light') {
-      root.removeAttribute('data-theme');
-    } else {
-      root.setAttribute('data-theme', 'dark');
-    }
-    try {
-      localStorage.setItem('nota-bm-theme', root.getAttribute('data-theme') || 'auto');
-    } catch (e) {}
+    if (current === 'dark') { root.setAttribute('data-theme', 'light'); }
+    else if (current === 'light') { root.removeAttribute('data-theme'); }
+    else { root.setAttribute('data-theme', 'dark'); }
+    try { localStorage.setItem('nota-bm-theme', root.getAttribute('data-theme') || 'auto'); } catch (e) {}
   });
 
   try {
     const saved = localStorage.getItem('nota-bm-theme');
-    if (saved && saved !== 'auto') {
-      document.documentElement.setAttribute('data-theme', saved);
-    }
+    if (saved && saved !== 'auto') { document.documentElement.setAttribute('data-theme', saved); }
   } catch (e) {}
 
   // ---- Nota peribadi (auto-simpan ke storan pelayar ini) ----
