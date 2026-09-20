@@ -480,6 +480,12 @@
   .novel-version p:last-child { margin-bottom: 0; }
   @media (max-width: 700px) { .novel-versions { grid-template-columns: 1fr; } }
 
+  .nav-link.active {
+    background: var(--primary);
+    color: #fff;
+  }
+  .subpage[hidden] { display: none; }
+
   .personal-note { margin-top: 28px; background: var(--bg-raised); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; }
   .personal-note-label { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
   .personal-note-label span { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.03em; color: var(--accent); }
@@ -563,7 +569,7 @@
       <div class="oc-title">Nota Tingkatan 1-3</div>
       <div class="oc-desc">Nota Menengah Rendah — akan ditambah dari semasa ke semasa.</div>
     </a>
-    <a class="overview-card" href="#karangan-a">
+    <a class="overview-card" href="#surat-rasmi">
       <span class="oc-emoji">✍️</span>
       <div class="oc-title">Koleksi Karangan</div>
       <div class="oc-desc">Format &amp; contoh karangan berformat dan tidak berformat.</div>
@@ -1335,7 +1341,81 @@
         }
       }, 400);
     });
-  });
+  // ---- Setiap subtopik dalam paparannya sendiri (bukan scroll berterusan) ----
+  (function () {
+    const sidebar = document.getElementById('sidebar');
+    if (!sidebar) return;
+
+    const navIds = new Set();
+    sidebar.querySelectorAll('.nav-link').forEach(a => {
+      const href = a.getAttribute('href') || '';
+      if (href.startsWith('#') && href.length > 1) navIds.add(href.slice(1));
+    });
+
+    const sections = document.querySelectorAll('#panel-spm main > section.topic');
+
+    sections.forEach(section => {
+      const children = Array.from(section.children);
+      let started = false;
+      let bucket = null;
+      const buckets = [];
+
+      children.forEach(node => {
+        const id = node.id;
+        if (id && navIds.has(id)) {
+          started = true;
+          bucket = { id, nodes: [node] };
+          buckets.push(bucket);
+        } else if (started && bucket) {
+          bucket.nodes.push(node);
+        }
+      });
+
+      buckets.forEach((b, idx) => {
+        const wrap = document.createElement('div');
+        wrap.className = 'subpage';
+        wrap.dataset.page = b.id;
+        if (idx !== 0) wrap.hidden = true;
+        const first = b.nodes[0];
+        first.parentNode.insertBefore(wrap, first);
+        b.nodes.forEach(n => wrap.appendChild(n));
+      });
+    });
+
+    function showSubpage(id) {
+      const target = document.querySelector('#panel-spm .subpage[data-page="' + id + '"]');
+      if (!target) return;
+      const targetSection = target.closest('section.topic');
+
+      sections.forEach(s => { s.hidden = (s !== targetSection); });
+      targetSection.querySelectorAll('.subpage').forEach(p => { p.hidden = (p !== target); });
+
+      document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.classList.toggle('active', a.getAttribute('href') === '#' + id);
+      });
+
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      const id = (a.getAttribute('href') || '').slice(1);
+      if (navIds.has(id)) {
+        a.addEventListener('click', e => {
+          e.preventDefault();
+          showSubpage(id);
+          history.replaceState(null, '', '#' + id);
+        });
+      }
+    });
+
+    const initialHash = window.location.hash.replace('#', '');
+    if (initialHash && navIds.has(initialHash)) {
+      showSubpage(initialHash);
+    } else if (sections.length) {
+      const firstSub = sections[0].querySelector('.subpage');
+      if (firstSub) showSubpage(firstSub.dataset.page);
+    }
+  })();
 </script>
 
 </body>
